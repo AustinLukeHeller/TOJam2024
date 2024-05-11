@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmj2kthm32h2b"]
+
+[ext_resource type="PackedScene" uid="uid://bv6avaer22yl3" path="res://scenes/PinballObjects/flipper_l.tscn" id="1_guju8"]
+[ext_resource type="PackedScene" uid="uid://c7wpc6x1n1ffu" path="res://scenes/PinballObjects/flipper_r.tscn" id="2_hi4ii"]
+
+[node name="Silver\'s Test scene" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.864357, -0.0985758, 2.53675)
+
+[node name="FlipperL" parent="." instance=ExtResource("1_guju8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.67258, 0, 0.314582)
+flipper_rotation_speed = 8.0
+
+[node name="FlipperR" parent="." instance=ExtResource("2_hi4ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1933, 0, 0.406202)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.213184, 0.977012, 0, -0.977012, 0.213184, -0.809784, 3.05882, 1.04314)
+fov = 115.1

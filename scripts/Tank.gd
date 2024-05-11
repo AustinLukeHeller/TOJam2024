@@ -3,11 +3,12 @@ extends Node3D
 @export var maxAngle: float
 @export var turnAccel: float
 @export var turnMaxSpeed: float
+@export var progressionNode: Node
 var activated: bool = false
 var velocity: float = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	connect("scoreEffect1",_turnOnMoving)
 	pass # Replace with function body.
 
 func _turnOnMoving():

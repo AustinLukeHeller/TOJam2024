@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cd1g0fc670suc"]
+[gd_scene load_steps=16 format=3 uid="uid://cd1g0fc670suc"]
 
 [ext_resource type="Script" path="res://scripts/CameraControls.gd" id="1_2eqfg"]
 [ext_resource type="Script" path="res://scenes/FollowAtOffset.gd" id="1_12ctm"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://cr0cwcfylcf05" path="res://textures/pinball_screen_texture.tres" id="1_x1yod"]
 [ext_resource type="PackedScene" uid="uid://qc8mond1ye32" path="res://scenes/InnerPinball.tscn" id="2_bqf6q"]
 [ext_resource type="Texture2D" uid="uid://cnu4nkv7etvhw" path="res://textures/warGround.png" id="4_5pmuc"]
-[ext_resource type="Script" path="res://scripts/scoreAndProgression.gd" id="7_884ja"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_3vop3"]
 
@@ -43,12 +42,13 @@ texture_filter = 2
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.0781754, -0.984341, 0.157993, 0.352543, 0.175534, 0.919185, -0.932525, -0.0161583, 0.360745, 4.35084, 0, -0.512858)
 
-[node name="Tank" type="Node3D" parent="."]
+[node name="Tank" type="Node3D" parent="." node_paths=PackedStringArray("progressionNode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00724739, 0.103596, -0.151719)
 script = ExtResource("1_evj53")
 maxAngle = 65.0
 turnAccel = 50.0
 turnMaxSpeed = 100.0
+progressionNode = NodePath("")
 
 [node name="Screen Plane" type="CSGMesh3D" parent="Tank"]
 transform = Transform3D(0.113815, 0, 0, 0, 0.0569075, -0.0985667, 0, 0.0985667, 0.0569075, 0, 0, 0)
@@ -83,10 +83,6 @@ mesh = SubResource("BoxMesh_nqb4f")
 transform = Transform3D(0.112636, 0, 3.0785, 0, 0.426488, 0, -0.108021, 0, 3.21, -1.35239, 3.57628e-07, -1.03677)
 visible = false
 mesh = SubResource("BoxMesh_nqb4f")
-
-[node name="progression manager" type="Node3D" parent="."]
-script = ExtResource("7_884ja")
-scoreGoals = Array[float]([500.0, 1000.0, 1500.0, 2000.0, 3000.0, 4000.0, 5000.0, 6000.0, 8000.0, 10000.0, 12000.0, 15000.0, 20000.0])
 
 [node name="CameraStuff" type="Node3D" parent="."]
 

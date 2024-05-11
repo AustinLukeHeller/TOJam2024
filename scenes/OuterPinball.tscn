@@ -90,11 +90,11 @@ scoreGoals = Array[float]([500.0, 1000.0, 1500.0, 2000.0, 3000.0, 4000.0, 5000.0
 
 [node name="CameraStuff" type="Node3D" parent="."]
 
-[node name="Tank View" type="Node3D" parent="CameraStuff"]
-transform = Transform3D(1, 0, 0, 0, 0.881303, 0.472551, 0, -0.472551, 0.881303, 0, 0.265, 0.049)
-
 [node name="Start View" type="Node3D" parent="CameraStuff"]
 transform = Transform3D(1, 0, 0, 0, 0.881303, 0.472551, 0, -0.472551, 0.881303, 0, 0.133391, -0.115843)
+
+[node name="Tank View" type="Node3D" parent="CameraStuff"]
+transform = Transform3D(1, 0, 0, 0, 0.881303, 0.472551, 0, -0.472551, 0.881303, 0, 0.265, 0.049)
 
 [node name="OffsetManager" type="Node3D" parent="CameraStuff" node_paths=PackedStringArray("targetNode")]
 script = ExtResource("1_12ctm")

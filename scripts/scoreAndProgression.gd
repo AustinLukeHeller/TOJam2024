@@ -3,8 +3,9 @@ extends Node
 @export var score: float = 0.0
 @export var scoreGoals:Array[float]
 var currentGoal: int = 0
+signal testSignal
 # Called when the node enters the scene tree for the first time.
-func _enter_tree():
+func _init():
 	for i in range(0,scoreGoals.size()):
 		add_user_signal("scoreEffect"+str(i),[])
 	pass # Replace with function body.

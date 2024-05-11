@@ -1,9 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cd1g0fc670suc"]
+[gd_scene load_steps=8 format=3 uid="uid://cd1g0fc670suc"]
 
 [ext_resource type="Texture2D" uid="uid://cr0cwcfylcf05" path="res://textures/pinball_screen_texture.tres" id="1_x1yod"]
 [ext_resource type="PackedScene" uid="uid://qc8mond1ye32" path="res://scenes/InnerPinball.tscn" id="2_bqf6q"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_f0y4l"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_3vop3"]
 
@@ -14,20 +12,26 @@ albedo_texture = ExtResource("1_x1yod")
 
 [sub_resource type="World3D" id="World3D_5wiho"]
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_f0y4l"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_nqb4f"]
+
 [node name="OuterPinball" type="Node3D"]
 
+[node name="Camera Points" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.857194, 0.514993, 0, -0.514993, 0.857194, 0, 0, 0)
+
+[node name="Tank View" type="Node3D" parent="Camera Points"]
+transform = Transform3D(1, 0, 0, 0, 0.998771, -0.0495645, 0, 0.0495645, 0.998771, 0, 0.201913, 0.178575)
+
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.857194, 0.514993, 0, -0.514993, 0.857194, 0, 0.215427, 0.0501258)
+transform = Transform3D(1, 0, 0, 0, 0.881666, 0.471874, 0, -0.471874, 0.881666, 0, 0.265043, 0.0490897)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.0781754, -0.984341, 0.157993, 0.352543, 0.175534, 0.919185, -0.932525, -0.0161583, 0.360745, 4.35084, 0, -0.512858)
 
-[node name="Ground Plane" type="CSGMesh3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.986771, -0.162121, 0, 0.162121, 0.986771, 0, -0.0865823, -1.23912)
-mesh = SubResource("PlaneMesh_f0y4l")
-
 [node name="Screen Plane" type="CSGMesh3D" parent="."]
-transform = Transform3D(0.133551, 0, 0, 0, 0.0345655, -0.129, 0, 0.129, 0.0345655, 0.00724739, -0.000899084, -0.214527)
+transform = Transform3D(0.113815, 0, 0, 0, 0.0569075, -0.0985667, 0, 0.0985667, 0.0569075, 0.00724739, 0.103596, -0.151719)
 mesh = SubResource("PlaneMesh_3vop3")
 material = SubResource("StandardMaterial3D_jpba1")
 
@@ -37,3 +41,19 @@ world_3d = SubResource("World3D_5wiho")
 
 [node name="InnerPinball" parent="SubViewport" instance=ExtResource("2_bqf6q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.81355, 0.128625, 0)
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="Ground Plane" type="CSGMesh3D" parent="Environment"]
+transform = Transform3D(2.97, 0, 0, 0, 1.11293, -0.135004, 0, 0.0842675, 1.78301, 0, -0.0865823, -1.23912)
+mesh = SubResource("PlaneMesh_f0y4l")
+
+[node name="wall" type="CSGMesh3D" parent="Environment"]
+transform = Transform3D(0.108021, 0, -3.06261, 0, 0.426488, 0, 0.112636, 0, 2.93714, 1.40914, 1.19209e-07, -0.992557)
+visible = false
+mesh = SubResource("BoxMesh_nqb4f")
+
+[node name="wall2" type="CSGMesh3D" parent="Environment"]
+transform = Transform3D(0.112636, 0, 3.0785, 0, 0.426488, 0, -0.108021, 0, 3.21, -1.35239, 3.57628e-07, -1.03677)
+visible = false
+mesh = SubResource("BoxMesh_nqb4f")

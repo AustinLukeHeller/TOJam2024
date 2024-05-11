@@ -1,8 +1,5 @@
 extends AnimatableBody3D
 @onready var sound = $Sound
-
-@export var tiltedTable = false
-@export var muted := false;
 @export var push_speed := 10.0
 @export var pull_speed := 2.0
 @export var max_pullback := 2.0
@@ -11,12 +8,11 @@ var current_pullback := 0.0
 var return_speed := 0.0
 var start_position: Vector3
 
-
 func _ready():
 	start_position = position
 
 func _physics_process(delta):
-	if tiltedTable:
+	if Global.tilt:
 		return
 	if Input.is_action_pressed("Launch") and current_pullback < max_pullback:
 		current_pullback += pull_speed * delta
@@ -25,7 +21,7 @@ func _physics_process(delta):
 		current_pullback -= return_speed * delta
 	
 	if Input.is_action_just_released("Launch"):
-		if !muted:
+		if Global.mute:
 			sound.play()
 	
 	if current_pullback < 0:

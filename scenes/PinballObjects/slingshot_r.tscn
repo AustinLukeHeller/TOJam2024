@@ -192,8 +192,6 @@ _data = {
 
 [node name="SlingshotR" type="AnimatableBody3D"]
 script = ExtResource("1_828h7")
-tiltedTable = null
-muted = null
 force = null
 score_event = null
 

@@ -8,9 +8,27 @@ extends AnimatableBody3D
 @onready var shot_origin = $ShotOrigin
 signal test_complete
 
+@export var moveable:=false
+@export var speed:=0
+@export var horDelta:=0
+@export var verDelta:=0
+
+var startingPos;
+var leftSide;
+var rightSide;
+var topSide;
+var bottomSide;
+
 
 func _ready():
+	startingPos=position.x
 	fire_sound.stream = fire
+	
+	topSide =position.y+verDelta;
+	bottomSide = position.y-verDelta;
+	rightSide = position.x+horDelta;
+	leftSide = position.x-horDelta;
+	
 
 
 func test():
@@ -33,3 +51,16 @@ func _on_area_3d_body_entered(body: RigidBody3D):
 		direction.y = 0
 		direction = direction.normalized()
 		body.apply_central_impulse(direction * force)
+		
+func _physics_process(delta):
+	if Global.tilt:
+		return
+	if Input.is_action_pressed("Left") && position.x>leftSide&&position.y>bottomSide:
+		position.x += -delta*speed
+		print("left",position.x)
+
+	if Input.is_action_pressed("Right")&& position.x<rightSide&&position.y<topSide:
+		position.x += delta*speed;
+		print("right", position.x)
+
+	

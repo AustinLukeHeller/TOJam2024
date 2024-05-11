@@ -17,6 +17,6 @@ enum Mode {
 @export var screen_effects_disabled := false
 
 
-func _input(ev):
+func _input(_ev):
 	if Input.is_action_just_pressed("Mute"):
 		mute!=mute

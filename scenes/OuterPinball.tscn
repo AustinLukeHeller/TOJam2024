@@ -1,5 +1,27 @@
-[gd_scene format=3 uid="uid://cd1g0fc670suc"]
+[gd_scene load_steps=5 format=3 uid="uid://cd1g0fc670suc"]
 
-[node name="OuterPinball" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://cr0cwcfylcf05" path="res://textures/pinball_screen_texture.tres" id="1_x1yod"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_f0y4l"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_637dy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kfmkx"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("1_x1yod")
+
+[node name="OuterPinball" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="Plane" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.986771, -0.162121, 0, 0.162121, 0.986771, 0, -0.0865823, -1.23912)
+mesh = SubResource("PlaneMesh_f0y4l")
+
+[node name="Box" type="CSGMesh3D" parent="."]
+transform = Transform3D(0.171505, 0, 0, 0, 0.171505, 0, 0, 0, 0.171505, -0.00243574, -0.118804, -0.72411)
+mesh = SubResource("BoxMesh_637dy")
+material = SubResource("StandardMaterial3D_kfmkx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.398205, -0.754487, 0.521711, 0, 0.568749, 0.822511, -0.917297, 0.327528, -0.226478, 0.90749, 0, -0.512858)

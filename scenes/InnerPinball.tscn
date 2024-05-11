@@ -1,7 +1,14 @@
-[gd_scene format=3 uid="uid://qc8mond1ye32"]
+[gd_scene load_steps=2 format=3 uid="uid://qc8mond1ye32"]
 
-[node name="InnerPinball" type="Node2D"]
+[sub_resource type="BoxMesh" id="BoxMesh_i2st8"]
+
+[node name="InnerPinball" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
+current = true
 
 [node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(0.25877, 0, 0, 0, 0.25877, 0, 0, 0, 0.25877, 0, -0.164012, -1.0785)
+mesh = SubResource("BoxMesh_i2st8")

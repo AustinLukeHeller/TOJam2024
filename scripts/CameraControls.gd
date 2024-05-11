@@ -1,22 +1,20 @@
-extends FollowAtOffset
+extends Node3D
 
-#camera follows at its current offset the tank. offset can be changed from one node to another
+@export var startCamNode :Node3D
+@export var tankCamNode : Node3D
+@export var moveSpeed:=.2 as float
+var targetNode:Node3D
 
-
-@export var startCamPos := "" # assign from editor
-@export var tankCamPos := "" # assign from editor
-@onready var startCamNode := get_node(startCamPos) as Node3D
-@onready var tankCamNode := get_node(tankCamPos) as Node3D
-@export var moveSpeed: float
-var moving: bool =false
+func _ready():
+	targetNode=startCamNode
+	position=startCamNode.position
+	
 # Called when the node enters the scene tree for the first time.
 func _switchTarget(newTarget:Node3D):
-	if(!moving):
-		print("yart")
-		targetNode=newTarget
-	pass
-func _followTargetAtSpeed(delta):
-	position=Vector3 (move_toward(position.x,targetNode.position.x,moveSpeed*delta),
+	targetNode=newTarget
+	
+func _followTargetAtSpeed(delta):	
+	position=Vector3 (move_toward(position.x, targetNode.position.x,moveSpeed*delta),
 	move_toward(position.y,targetNode.position.y,moveSpeed*delta),
 	move_toward(position.z,targetNode.position.z,moveSpeed*delta))
 # Called every frame. 'delta' is the elapsed time since the previous frame.

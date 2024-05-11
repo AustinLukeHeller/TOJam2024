@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://cd1g0fc670suc"]
+[gd_scene load_steps=15 format=3 uid="uid://cd1g0fc670suc"]
 
+[ext_resource type="Script" path="res://scripts/CameraControls.gd" id="1_2eqfg"]
 [ext_resource type="Script" path="res://scripts/Tank.gd" id="1_evj53"]
 [ext_resource type="Texture2D" uid="uid://cr0cwcfylcf05" path="res://textures/pinball_screen_texture.tres" id="1_x1yod"]
 [ext_resource type="PackedScene" uid="uid://qc8mond1ye32" path="res://scenes/InnerPinball.tscn" id="2_bqf6q"]
@@ -31,19 +32,28 @@ detail_enabled = true
 detail_mask = SubResource("NoiseTexture2D_xro6k")
 detail_blend_mode = 1
 detail_albedo = ExtResource("4_5pmuc")
+texture_filter = 2
 
 [sub_resource type="BoxMesh" id="BoxMesh_nqb4f"]
 
 [node name="OuterPinball" type="Node3D"]
 
 [node name="Camera Points" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.857194, 0.514993, 0, -0.514993, 0.857194, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Tank View" type="Node3D" parent="Camera Points"]
-transform = Transform3D(1, 0, 0, 0, 0.998771, -0.0495645, 0, 0.0495645, 0.998771, 0, 0.201913, 0.178575)
+transform = Transform3D(1, 0, 0, 0, 0.881303, 0.472551, 0, -0.472551, 0.881303, 0, 0.265, 0.049)
+
+[node name="Start View" type="Node3D" parent="Camera Points"]
+transform = Transform3D(1, 0, 0, 0, 0.881303, 0.472551, 0, -0.472551, 0.881303, 0, 0.133391, -0.115843)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.881666, 0.471874, 0, -0.471874, 0.881666, 0, 0.265043, 0.0490897)
+script = ExtResource("1_2eqfg")
+startCamPos = "../Camera Points/Start View"
+tankCamPos = "../Camera Points/Tank View"
+targetPos = "../Tank"
+moveSpeed = 0.2
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.0781754, -0.984341, 0.157993, 0.352543, 0.175534, 0.919185, -0.932525, -0.0161583, 0.360745, 4.35084, 0, -0.512858)

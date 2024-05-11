@@ -12,11 +12,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
+	if(Input.is_key_pressed(KEY_2)):
+		position+=Vector3.RIGHT*delta
 	if(Input.is_action_pressed("Left")):
 		velocity+=turnAccel*delta
 	elif(Input.is_action_pressed("Right")):
-		velocity-=turnAccel*delta	
+		velocity-=turnAccel*delta
 	else:
 		velocity = move_toward(velocity,0,turnAccel)
 	velocity = clamp(velocity,-turnMaxSpeed,turnMaxSpeed)

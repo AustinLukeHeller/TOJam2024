@@ -42,7 +42,7 @@ texture_filter = 2
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.0781754, -0.984341, 0.157993, 0.352543, 0.175534, 0.919185, -0.932525, -0.0161583, 0.360745, 4.35084, 0, -0.512858)
 
-[node name="Tank" type="Node3D" parent="."]
+[node name="Tank" type="AnimatableBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00724739, 0.103596, -0.151719)
 script = ExtResource("1_evj53")
 maxAngle = 65.0

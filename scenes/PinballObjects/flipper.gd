@@ -9,7 +9,7 @@ extends ScoreReliant
 
 
 
-func _physics_process(delta):
+func _physics_process(delta):	
 	if Global.tilt || !passedScoreThreshold:
 		return
 	if (rotation_direction < 0 and Input.is_action_pressed("Right")) or (rotation_direction > 0 and Input.is_action_pressed("Left")):

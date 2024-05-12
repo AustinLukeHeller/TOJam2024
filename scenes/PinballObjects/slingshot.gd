@@ -16,16 +16,12 @@ signal test_complete
 var startingPos;
 var leftSide;
 var rightSide;
-var topSide;
-var bottomSide;
 
 
 func _ready():
 	startingPos=position.x
 	fire_sound.stream = fire
 	
-	topSide =position.y+verDelta;
-	bottomSide = position.y-verDelta;
 	rightSide = position.x+horDelta;
 	leftSide = position.x-horDelta;
 	
@@ -55,12 +51,10 @@ func _on_area_3d_body_entered(body: RigidBody3D):
 func _physics_process(delta):
 	if Global.tilt ||!moveable||!passedScoreThreshold:
 		return
-	if Input.is_action_pressed("Left") && position.x>leftSide&&position.y>bottomSide:
+	if Input.is_action_pressed("Left") && position.x>leftSide:
 		position.x += -delta*speed
-		print("left",position.x)
-
-	if Input.is_action_pressed("Right")&& position.x<rightSide&&position.y<topSide:
+		
+	if Input.is_action_pressed("Right")&& position.x<rightSide:
 		position.x += delta*speed;
-		print("right", position.x)
-
+		
 	

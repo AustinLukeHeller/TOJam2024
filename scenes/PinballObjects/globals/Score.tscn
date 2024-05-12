@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7j378sn0c8fe"]
+
+[ext_resource type="Script" path="res://scenes/PinballObjects/globals/Score.gd" id="1_aoqa4"]
+
+[node name="Score" type="Node3D"]
+script = ExtResource("1_aoqa4")

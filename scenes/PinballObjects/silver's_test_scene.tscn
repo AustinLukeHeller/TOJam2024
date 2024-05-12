@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cmj2kthm32h2b"]
+[gd_scene load_steps=24 format=3 uid="uid://cmj2kthm32h2b"]
 
 [ext_resource type="PackedScene" uid="uid://bv6avaer22yl3" path="res://scenes/PinballObjects/flipper_l.tscn" id="1_guju8"]
 [ext_resource type="PackedScene" uid="uid://c7wpc6x1n1ffu" path="res://scenes/PinballObjects/flipper_r.tscn" id="2_hi4ii"]
@@ -6,122 +6,612 @@
 [ext_resource type="PackedScene" uid="uid://b5ar2wg6c4bnl" path="res://scenes/PinballObjects/moving_wall_sling.tscn" id="4_5gw45"]
 [ext_resource type="Script" path="res://scenes/ScoreManager.gd" id="5_rvokj"]
 [ext_resource type="PackedScene" uid="uid://bj20cl1e123ci" path="res://scenes/PinballObjects/ball.tscn" id="6_1wsf4"]
-[ext_resource type="Material" path="res://materials/shiny_steel_mat.tres" id="6_20vrh"]
 [ext_resource type="PackedScene" uid="uid://cyfwe84l5a4im" path="res://targets/bumper_large.tscn" id="7_4ssm5"]
+[ext_resource type="PackedScene" uid="uid://scibfnmd45mc" path="res://prefabs/curve_wall.tscn" id="7_dgall"]
+[ext_resource type="PackedScene" uid="uid://boc45nefsvxcg" path="res://prefabs/wall.tscn" id="7_ru0iv"]
+[ext_resource type="PackedScene" uid="uid://cyhu0ox6ctirc" path="res://prefabs/long_ramp.tscn" id="8_1xi7r"]
 [ext_resource type="PackedScene" uid="uid://b38ottfharoes" path="res://targets/bumper_small.tscn" id="8_tm13e"]
 [ext_resource type="PackedScene" uid="uid://cco2blfkabhq7" path="res://targets/slingshot_l.tscn" id="9_rtf1l"]
 [ext_resource type="PackedScene" uid="uid://bakyqmpmq5mmy" path="res://targets/slingshot_r.tscn" id="10_x1ybv"]
-[ext_resource type="PackedScene" uid="uid://41rbxw84k3fh" path="res://targets/scoop.tscn" id="11_gfm3w"]
 [ext_resource type="PackedScene" uid="uid://cr4r3j0284wod" path="res://targets/spinner.tscn" id="12_nxtf3"]
 [ext_resource type="PackedScene" uid="uid://vnjbuega05s1" path="res://targets/target.tscn" id="13_mcnjp"]
 [ext_resource type="PackedScene" uid="uid://b0xkxaslxjol7" path="res://targets/target_bank.tscn" id="14_mdd4t"]
 [ext_resource type="PackedScene" uid="uid://kri7qhxrl62h" path="res://targets/wall_sling_1.tscn" id="15_vy1hk"]
+[ext_resource type="PackedScene" uid="uid://cacsvhfu3ijbr" path="res://ball_trigger.tscn" id="16_dh66i"]
 [ext_resource type="PackedScene" uid="uid://tb6beixppwb8" path="res://targets/rollover.tscn" id="16_eqi58"]
 [ext_resource type="PackedScene" uid="uid://xpajt6sy2fms" path="res://ball_manager.tscn" id="17_ijqd7"]
+[ext_resource type="PackedScene" uid="uid://ctv7m8sgiqo60" path="res://Models/Funnel.glb" id="19_5vlh8"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_kt630"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_gldma"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_h6bfa"]
-size = Vector3(1.9104, 0.556763, 1.85669)
+[sub_resource type="BoxShape3D" id="BoxShape3D_wpxcd"]
 
 [node name="Silver\'s Test scene" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.864357, -0.0985758, 2.53675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.21303, 0.977046, 0, -0.977046, 0.21303, -0.809784, 4.64636, 4.08537)
-fov = 115.1
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866026, 0, -0.866025, 0.5, 0.794028, 14, 7)
+fov = 60.0
 
 [node name="PlayerControlledObjects" type="Node3D" parent="."]
 
-[node name="FlipperL2" parent="PlayerControlledObjects" instance=ExtResource("1_guju8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.00049, -0.024838, -5.3638)
-
-[node name="FlipperL" parent="PlayerControlledObjects" instance=ExtResource("1_guju8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.67258, 0, 0.314582)
-
-[node name="FlipperRMiddle" parent="PlayerControlledObjects" instance=ExtResource("2_hi4ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7064, 0, -4.5505)
+[node name="FlipperLMiddle" parent="PlayerControlledObjects" instance=ExtResource("1_guju8")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.46173, 0, -1.18121)
+flipper_rotation_speed = 20.0
+flipper_max_rotation = 60.0
+flipper_min_rotation = 15.0
 
 [node name="FlipperRUpper" parent="PlayerControlledObjects" instance=ExtResource("2_hi4ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65489, 0, -5.36846)
-
-[node name="FlipperR" parent="PlayerControlledObjects" instance=ExtResource("2_hi4ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1933, 0, 0.406202)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707106, 4.49409, -4.76837e-07, -4.21856)
 
 [node name="Plunger" parent="PlayerControlledObjects" instance=ExtResource("3_nuor2")]
-transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, -7.07548, 0.0985758, 2.15638)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 6.72261, 0.0985758, 6.37781)
 push_speed = 20.0
 pull_speed = 3.0
 
 [node name="movingwall" parent="PlayerControlledObjects" instance=ExtResource("4_5gw45")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.694876, 0.0985763, -2.82211)
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.102785, 0.2, -3.81628)
 force = 5.0
 moveable = true
-speed = 1
-horDelta = 5
+speed = 2
+horDelta = 2
 
-[node name="scoreManager" type="Node3D" parent="." node_paths=PackedStringArray("triggers")]
-script = ExtResource("5_rvokj")
-triggers = [NodePath("../PlayerControlledObjects/FlipperL2"), NodePath("../PlayerControlledObjects/FlipperRMiddle"), NodePath("../PlayerControlledObjects/movingwall"), NodePath("../PlayerControlledObjects/FlipperRUpper")]
-scoreThresholds = Array[float]([100.0, 200.0, 300.0, 400.0])
+[node name="movingwall2" parent="PlayerControlledObjects" instance=ExtResource("4_5gw45")]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -0.0598345, 0.2, -1.11031)
+force = 5.0
+moveable = true
+speed = 2
+horDelta = 2
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
-transform = Transform3D(9.29588, 0, 0, 0, 1, 0, 0, 0, 6.37305, 0, 0, -0.238189)
-mesh = SubResource("PlaneMesh_kt630")
-material = ExtResource("6_20vrh")
+[node name="FlipperPair" type="Node3D" parent="PlayerControlledObjects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
 
-[node name="RigidBody3D" type="RigidBody3D" parent="CSGMesh3D"]
-visible = false
-freeze = true
+[node name="FlipperL" parent="PlayerControlledObjects/FlipperPair" instance=ExtResource("1_guju8")]
+transform = Transform3D(0.965926, 0, -0.258819, -7.45058e-09, 1, -2.98023e-08, 0.258819, 2.98023e-08, 0.965926, -0.75, 0, 0)
+flipper_rotation_speed = 18.0
+flipper_min_rotation = -5.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGMesh3D/RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0345458, -0.221619, -0.0640869)
-shape = SubResource("BoxShape3D_h6bfa")
+[node name="FlipperR" parent="PlayerControlledObjects/FlipperPair" instance=ExtResource("2_hi4ii")]
+transform = Transform3D(0.965926, 0, 0.258819, 7.45058e-09, 1, -2.98023e-08, -0.258819, 2.98023e-08, 0.965926, 2.4, 0, 0)
+flipper_rotation_speed = 18.0
+flipper_min_rotation = -5.0
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.18865, 0.982044, 0, -0.982044, 0.18865, 9, 0, 0)
+[node name="TableWallsHolder" type="Node3D" parent="."]
+
+[node name="FunnelStuff" type="Node3D" parent="TableWallsHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, -0.1, 0)
+
+[node name="Funnel" parent="TableWallsHolder/FunnelStuff" instance=ExtResource("19_5vlh8")]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 6.696, 0.278028, -12.634)
+
+[node name="StartingPath" type="Node3D" parent="TableWallsHolder"]
+
+[node name="wall29" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(-4.37114e-08, 6.51351e-16, 1, 8.9407e-08, 1, 1.77636e-15, -1, 1.04308e-07, -4.37114e-08, 7.23135, 0, 6.74186)
+
+[node name="wall" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 5.75)
+
+[node name="wall2" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.17869, 0, 5.75)
+
+[node name="wall30" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 6.5, 0, 6.73481)
+
+[node name="wall31" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 7.17869, 0, 6.73481)
+
+[node name="wall3" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 4.75)
+
+[node name="wall4" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.17869, 0, 4.75)
+
+[node name="wall5" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 3.75)
+
+[node name="wall6" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.17869, 0, 3.75)
+
+[node name="wall7" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 2.75)
+
+[node name="wall8" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.17869, 0, 2.75)
+
+[node name="wall9" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 1.75)
+
+[node name="wall10" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.17869, 0, 1.75)
+
+[node name="wall11" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 0.75)
+
+[node name="wall12" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.17869, 0, 0.75)
+
+[node name="wall13" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, -0.25)
+
+[node name="wall14" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.17869, 0, -0.25)
+
+[node name="wall15" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, -1.25)
+
+[node name="wall16" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.17869, 0, -1.25)
+
+[node name="wall17" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, -2.25)
+
+[node name="wall18" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.17869, 0, -2.25)
+
+[node name="wall19" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, -3.25)
+
+[node name="wall20" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.17869, 0, -3.25)
+
+[node name="wall21" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, -4.25)
+
+[node name="wall22" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.17869, 0, -4.25)
+
+[node name="wall23" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, -5.25)
+
+[node name="wall24" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.17869, 0, -5.25)
+
+[node name="wall25" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, -6.25)
+
+[node name="wall32" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.71368, 0, -8.29298)
+
+[node name="wall36" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.20278, 0, -8.29298)
+
+[node name="wall37" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -3.44579, 0, -8.29298)
+
+[node name="wall38" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -3.69808, 0, -8.29297)
+
+[node name="wall39" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -3.87481, 0, -8.29297)
+
+[node name="wall33" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.71368, 0, -8.29298)
+
+[node name="wall34" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.96298, 0, -8.29298)
+
+[node name="wall35" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -2.96298, 0, -9.29298)
+
+[node name="wall26" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.17869, 0, -6.25)
+
+[node name="wall27" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, -7.25)
+
+[node name="wall28" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.17869, 0, -7.25)
+
+[node name="CurveWall" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_dgall")]
+transform = Transform3D(0.258819, 0, -0.965925, 0, 1, 0, 0.965927, 0, 0.258819, 6.39872, -1.19209e-07, -11.1862)
+
+[node name="CurveWall2" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_dgall")]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965927, 0, 0.258819, 5.7094, -1.19209e-07, -11.0857)
+
+[node name="CurveWall3" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_dgall")]
+transform = Transform3D(0.843392, 0, -0.5373, 0, 1, 0, 0.537299, 0, 0.843391, 3.77238, -0.0149672, -12.9664)
+
+[node name="CurveWall4" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_dgall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999998, 0.7207, -1.19209e-07, -12.9772)
+
+[node name="CurveWall5" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_dgall")]
+transform = Transform3D(0.843392, 0, 0.5373, 0, 1, 0, -0.537299, 0, 0.843391, -1.89596, 0, -11.3368)
+
+[node name="CurveWall6" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_dgall")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965925, 0, 0.258819, -2.7506, 0, -8.36116)
+
+[node name="sideSide" type="Node3D" parent="TableWallsHolder"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.99499, 0, 9.77232)
+
+[node name="wall" parent="TableWallsHolder/sideSide" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(-4.37114e-08, 1.90583e-21, 1, 4.47035e-08, 1, 1.95405e-15, -1, 4.47035e-08, -4.37114e-08, 8, 0, 0)
+
+[node name="wall2" parent="TableWallsHolder/sideSide" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(-4.37114e-08, 3.17638e-21, 1, 5.96046e-08, 1, 2.6054e-15, -1, 5.96047e-08, -4.37114e-08, 7, 0, 0)
+
+[node name="wall7" parent="TableWallsHolder/sideSide" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(-4.37113e-08, 1.05879e-21, 1, 4.47035e-08, 1, 1.95405e-15, -1, 4.47035e-08, -4.37114e-08, 10.9471, 0, 0.501173)
+
+[node name="wall3" parent="TableWallsHolder/sideSide" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(-4.37114e-08, 4.44693e-21, 1, 7.45058e-08, 1, 3.25675e-15, -1, 7.45058e-08, -4.37114e-08, 6, 0, 0)
+
+[node name="wall4" parent="TableWallsHolder/sideSide" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(-4.37114e-08, 6.51357e-16, 1, 8.9407e-08, 1, 3.25674e-15, -1, 8.9407e-08, -4.37114e-08, 5, 0, 0)
+
+[node name="wall5" parent="TableWallsHolder/sideSide" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(-4.37114e-08, 2.60541e-15, 1, 1.19209e-07, 1, 2.60539e-15, -1, 1.19209e-07, -4.37114e-08, 4, 0, 0)
+
+[node name="CurveWall3" parent="TableWallsHolder/sideSide" instance=ExtResource("7_dgall")]
+transform = Transform3D(0.906307, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, 10.8344, 0, 0.529449)
+
+[node name="CurveWall4" parent="TableWallsHolder/sideSide" instance=ExtResource("7_dgall")]
+transform = Transform3D(-0.866024, -7.57103e-08, -0.499999, -8.74227e-08, 1, 0, -0.499999, -4.37114e-08, 0.866024, 10.0159, 0, 0.567404)
+
+[node name="TableWalls" type="Node3D" parent="TableWallsHolder"]
+
+[node name="top" type="Node3D" parent="TableWallsHolder/TableWalls"]
+
+[node name="wall2" parent="TableWallsHolder/TableWalls/top" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 5.96046e-08, 1, 8.88178e-16, -1, 5.96046e-08, -4.37114e-08, 7, 0, -13.9)
+
+[node name="wall3" parent="TableWallsHolder/TableWalls/top" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 7.45058e-08, 1, 8.88178e-16, -1, 7.45058e-08, -4.37114e-08, 6, 0, -13.9)
+
+[node name="wall4" parent="TableWallsHolder/TableWalls/top" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 8.9407e-08, 1, 8.88178e-16, -1, 7.45058e-08, -4.37114e-08, 5, 0, -13.9)
+
+[node name="wall5" parent="TableWallsHolder/TableWalls/top" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 1.19209e-07, 1, 8.88178e-16, -1, 5.96046e-08, -4.37114e-08, 4, 0, -13.9)
+
+[node name="wall6" parent="TableWallsHolder/TableWalls/top" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 1.04308e-07, 1, 8.88178e-16, -1, 5.96046e-08, -4.37114e-08, 3, 0, -13.9)
+
+[node name="wall7" parent="TableWallsHolder/TableWalls/top" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 8.9407e-08, 1, 8.88178e-16, -1, 5.96046e-08, -4.37114e-08, 2, 0, -13.9)
+
+[node name="wall8" parent="TableWallsHolder/TableWalls/top" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 7.45058e-08, 1, 8.88178e-16, -1, 5.96046e-08, -4.37114e-08, 1, 0, -13.9)
+
+[node name="wall9" parent="TableWallsHolder/TableWalls/top" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 8.9407e-08, 1, 8.88178e-16, -1, 7.45058e-08, -4.37114e-08, 0, 0, -13.9)
+
+[node name="wall10" parent="TableWallsHolder/TableWalls/top" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 8.9407e-08, 1, 8.88178e-16, -1, 8.9407e-08, -4.37114e-08, -1, 0, -13.9)
+
+[node name="wall11" parent="TableWallsHolder/TableWalls/top" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 1.04308e-07, 1, 8.88178e-16, -1, 1.19209e-07, -4.37114e-08, -2, 0, -13.9)
+
+[node name="wall12" parent="TableWallsHolder/TableWalls/top" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 1.04308e-07, 1, 8.88178e-16, -1, 1.49012e-07, -4.37114e-08, -3, 0, -13.9)
+
+[node name="wall13" parent="TableWallsHolder/TableWalls/top" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 1.3411e-07, 1, 8.88178e-16, -1, 1.78814e-07, -4.37114e-08, -4, 0, -13.9)
+
+[node name="wall14" parent="TableWallsHolder/TableWalls/top" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 1.63913e-07, 1, 8.88178e-16, -1, 2.08616e-07, -4.37114e-08, -5, 0, -13.9)
+
+[node name="SideWall" type="Node3D" parent="TableWallsHolder/TableWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0)
+
+[node name="wall2" parent="TableWallsHolder/TableWalls/SideWall" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, 1.49012e-08, 1, -5.6, -5.96046e-08, 5.75)
+
+[node name="wall31" parent="TableWallsHolder/TableWalls/SideWall" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, -4.47035e-08, 0, 4.47035e-08, 1, -5.6, -5.96046e-08, 6.73481)
+
+[node name="wall4" parent="TableWallsHolder/TableWalls/SideWall" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, 1.49012e-08, 1, -5.6, -1.19209e-07, 4.75)
+
+[node name="wall6" parent="TableWallsHolder/TableWalls/SideWall" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, 1.49012e-08, 1, -5.6, -1.19209e-07, 3.75)
+
+[node name="wall8" parent="TableWallsHolder/TableWalls/SideWall" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, 1.49012e-08, 1, -5.6, 5.96046e-08, 2.75)
+
+[node name="wall10" parent="TableWallsHolder/TableWalls/SideWall" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, 1.49012e-08, 1, -5.6, -1.49012e-07, 1.75)
+
+[node name="wall12" parent="TableWallsHolder/TableWalls/SideWall" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, 1.49012e-08, 1, -5.6, -1.19209e-07, 0.75)
+
+[node name="wall14" parent="TableWallsHolder/TableWalls/SideWall" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, 1.49012e-08, 1, -5.6, 0, -0.25)
+
+[node name="wall16" parent="TableWallsHolder/TableWalls/SideWall" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, 1.49012e-08, 1, -5.6, 0, -1.25)
+
+[node name="wall18" parent="TableWallsHolder/TableWalls/SideWall" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, 1.49012e-08, 1, -5.6, -5.96046e-08, -2.25)
+
+[node name="wall20" parent="TableWallsHolder/TableWalls/SideWall" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, 1.49012e-08, 1, -5.6, -2.98023e-08, -3.25)
+
+[node name="wall22" parent="TableWallsHolder/TableWalls/SideWall" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, 1.49012e-08, 1, -5.6, -2.98023e-08, -4.25)
+
+[node name="wall24" parent="TableWallsHolder/TableWalls/SideWall" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, 1.49012e-08, 1, -5.6, 2.98023e-08, -5.25)
+
+[node name="wall26" parent="TableWallsHolder/TableWalls/SideWall" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, 1.49012e-08, 1, -5.6, -1.78814e-07, -6.25)
+
+[node name="wall28" parent="TableWallsHolder/TableWalls/SideWall" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, 1.49012e-08, 1, -5.6, 5.96046e-08, -7.25)
+
+[node name="wall29" parent="TableWallsHolder/TableWalls/SideWall" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, -5.6, 0, -8.25)
+
+[node name="wall30" parent="TableWallsHolder/TableWalls/SideWall" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, -5.6, 0, -9.25)
+
+[node name="wall32" parent="TableWallsHolder/TableWalls/SideWall" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, -5.6, 0, -10.25)
+
+[node name="wall33" parent="TableWallsHolder/TableWalls/SideWall" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, -5.6, 0, -11.25)
+
+[node name="wall34" parent="TableWallsHolder/TableWalls/SideWall" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, -5.6, 0, -12.25)
+
+[node name="wall35" parent="TableWallsHolder/TableWalls/SideWall" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, -4.47035e-08, 0, 4.47035e-08, 1, -5.6, 0, -12.75)
+
+[node name="Middle" type="Node3D" parent="TableWallsHolder"]
+transform = Transform3D(-0.173619, 0, 0.984813, 0, 1, 0, -0.984813, 0, -0.173618, 0.590369, -4.76837e-07, -1.34009)
+
+[node name="Middle2" type="Node3D" parent="TableWallsHolder/Middle"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -2.22532, 0, 1.88398)
+
+[node name="wall30" parent="TableWallsHolder/Middle/Middle2" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, -4.47035e-08, 0, 4.47035e-08, 1, -4.47035e-08, 2.66454e-15, 4.47035e-08, 1, 0, 0, 6)
+
+[node name="wall31" parent="TableWallsHolder/Middle/Middle2" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, -5.96047e-08, 0, 5.96047e-08, 1, 1.49012e-08, 0, 0, 1, 0, 0, 5)
+
+[node name="wall32" parent="TableWallsHolder/Middle/Middle2" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, -5.96047e-08, 2.98023e-08, 5.96046e-08, 1, 1.49012e-08, -5.96046e-08, 3.55271e-15, 1, 0, 0, 4.5)
+
+[node name="Middle3" type="Node3D" parent="TableWallsHolder/Middle"]
+transform = Transform3D(0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, 0.34202, 3.5223, 0, 3.55079)
+
+[node name="wall30" parent="TableWallsHolder/Middle/Middle3" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, -4.47035e-08, 0, 4.47035e-08, 1, -4.47035e-08, 2.66454e-15, 4.47035e-08, 1, 0, 0, 6)
+
+[node name="wall31" parent="TableWallsHolder/Middle/Middle3" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, -5.96047e-08, 0, 5.96047e-08, 1, 1.49012e-08, 0, 0, 1, 0, 0, 5)
+
+[node name="wall32" parent="TableWallsHolder/Middle/Middle3" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, -5.96047e-08, 2.98023e-08, 5.96046e-08, 1, 1.49012e-08, -5.96046e-08, 3.55271e-15, 1, 0, 0, 4.5)
+
+[node name="flipperSides" type="Node3D" parent="TableWallsHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0)
+
+[node name="side1" type="Node3D" parent="TableWallsHolder/flipperSides"]
+transform = Transform3D(-0.258819, 0, 0.965926, 1.49012e-08, 1, 1.86265e-08, -0.965926, 7.45058e-08, -0.258819, 0.5, 0, 6.35)
+
+[node name="wall30" parent="TableWallsHolder/flipperSides/side1" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, -4.47035e-08, 0, 4.47035e-08, 1, -4.47035e-08, 2.66454e-15, 4.47035e-08, 1, 0, 0, 6)
+
+[node name="wall31" parent="TableWallsHolder/flipperSides/side1" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, -5.96047e-08, 0, 5.96047e-08, 1, 1.49012e-08, 0, 0, 1, 0, 0, 5)
+
+[node name="wall32" parent="TableWallsHolder/flipperSides/side1" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, -5.96047e-08, 0, 5.96047e-08, 1, 0, 8.88178e-16, 2.98023e-08, 1, 0, 0, 4)
+
+[node name="wall33" parent="TableWallsHolder/flipperSides/side1" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, -5.96047e-08, 0, 5.96047e-08, 1, 0, 8.88178e-16, 2.98023e-08, 1, 0, 0, 3)
+
+[node name="side2" type="Node3D" parent="TableWallsHolder/flipperSides"]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, -1.11759e-08, -0.965927, 4.47035e-08, 0.258819, -6.5, 0, 4.25)
+
+[node name="wall30" parent="TableWallsHolder/flipperSides/side2" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, -4.47035e-08, 0, 4.47035e-08, 1, -4.47035e-08, 2.66454e-15, 4.47035e-08, 1, 0, 0, 6)
+
+[node name="wall31" parent="TableWallsHolder/flipperSides/side2" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, -5.96047e-08, 0, 5.96047e-08, 1, 1.49012e-08, 0, 0, 1, 0, 0, 5)
+
+[node name="wall32" parent="TableWallsHolder/flipperSides/side2" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, -5.96047e-08, 0, 5.96047e-08, 1, 0, 8.88178e-16, 2.98023e-08, 1, 0, 0, 4)
+
+[node name="wall33" parent="TableWallsHolder/flipperSides/side2" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, -5.96047e-08, 0, 5.96047e-08, 1, 0, 8.88178e-16, 2.98023e-08, 1, 0, 0, 3)
+
+[node name="wall34" parent="TableWallsHolder/flipperSides/side2" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, -5.96047e-08, 0, 5.96047e-08, 1, 0, 8.88178e-16, 2.98023e-08, 1, 0, 0, 2)
+
+[node name="SideCurve" type="Node3D" parent="TableWallsHolder"]
+
+[node name="CurveWall2" parent="TableWallsHolder/SideCurve" instance=ExtResource("7_dgall")]
+transform = Transform3D(-0.300706, 0, -0.953716, 0, 1, 0, 0.953718, 0, -0.300705, 6.49371, -2.38418e-07, -8.16368)
+
+[node name="side2" type="Node3D" parent="TableWallsHolder/SideCurve"]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 1.22591, 0, -1.23364)
+
+[node name="wall30" parent="TableWallsHolder/SideCurve/side2" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, -4.47035e-08, 0, 4.47035e-08, 1, -4.47035e-08, 2.66454e-15, 4.47035e-08, 1, 0, 0, 6)
+
+[node name="wall31" parent="TableWallsHolder/SideCurve/side2" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, -5.96047e-08, 0, 5.96047e-08, 1, 1.49012e-08, 0, 0, 1, 0, 0, 5)
+
+[node name="wall32" parent="TableWallsHolder/SideCurve/side2" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, -5.96047e-08, 0, 5.96047e-08, 1, 0, 8.88178e-16, 2.98023e-08, 1, 0, 0, 4)
+
+[node name="side3" type="Node3D" parent="TableWallsHolder/SideCurve"]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707106, 0, -0.707106, 1.4, 0, -1.04)
+
+[node name="wall30" parent="TableWallsHolder/SideCurve/side3" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, -4.47035e-08, 0, 4.47035e-08, 1, -4.47035e-08, 2.66454e-15, 4.47035e-08, 1, 0, 0, 6)
+
+[node name="wall33" parent="TableWallsHolder/SideCurve/side3" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, -4.47035e-08, 0, 4.47035e-08, 1, -4.47035e-08, 2.66454e-15, 4.47035e-08, 1, 0, 0, 6.9)
+
+[node name="wall31" parent="TableWallsHolder/SideCurve/side3" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, -5.96047e-08, 0, 5.96047e-08, 1, 1.49012e-08, 0, 0, 1, 0, 0, 5)
+
+[node name="wall32" parent="TableWallsHolder/SideCurve/side3" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, -5.96047e-08, 0, 5.96047e-08, 1, 0, 8.88178e-16, 2.98023e-08, 1, 0, 0, 4)
+
+[node name="longRamp" parent="." instance=ExtResource("8_1xi7r")]
+transform = Transform3D(-2.84124e-08, 0, -2, 0, 0.7, 0, 0.65, 0, -8.74228e-08, -5.49817, 0, -3.8885)
 
 [node name="Score-ables" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90385, 0.0567624, -0.318913)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4694, 0.0567624, -0.318913)
 
-[node name="Bumper-Large" parent="Score-ables" instance=ExtResource("7_4ssm5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0912, 0, -12.2183)
+[node name="UpperBumpers" type="Node3D" parent="Score-ables"]
 
-[node name="Bumper-Small" parent="Score-ables" instance=ExtResource("8_tm13e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.44851, 0, -12)
+[node name="Bumper-Small" parent="Score-ables/UpperBumpers" instance=ExtResource("8_tm13e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.58915, 0, -4.09175)
+
+[node name="Bumper-Small2" parent="Score-ables/UpperBumpers" instance=ExtResource("8_tm13e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21486, 0, -3.00952)
+
+[node name="Bumper-Small3" parent="Score-ables/UpperBumpers" instance=ExtResource("8_tm13e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.58757, 0, -2.64986)
+
+[node name="BottomBumperArea" type="Node3D" parent="Score-ables"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 9.83118, 0, -9.93887)
+
+[node name="Bumper-Large" parent="Score-ables/BottomBumperArea" instance=ExtResource("7_4ssm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.16507, 0, 1.22952)
+
+[node name="Bumper-Large2" parent="Score-ables/BottomBumperArea" instance=ExtResource("7_4ssm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.73545, 0, 3.42459)
+
+[node name="Bumper-Large3" parent="Score-ables/BottomBumperArea" instance=ExtResource("7_4ssm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5222, 0, 2.20008)
+
+[node name="bottomSlings" type="Node3D" parent="Score-ables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="SlingshotL" parent="Score-ables/bottomSlings" instance=ExtResource("9_rtf1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, 0)
+force = 5.0
+
+[node name="SlingshotR" parent="Score-ables/bottomSlings" instance=ExtResource("10_x1ybv")]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 14, 0, -0.181)
+force = 5.0
+
+[node name="Target_Bank" parent="Score-ables" instance=ExtResource("14_mdd4t")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 0.999999, 0, 0.866025, 0, 0.5, 16.1327, -3.35276e-08, -0.696692)
+
+[node name="Target_Bank2" parent="Score-ables" instance=ExtResource("14_mdd4t")]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 7.37633, -3.35276e-08, -7.91333)
 
 [node name="Target" parent="Score-ables" instance=ExtResource("13_mcnjp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.91401, -3.35276e-08, -10.4161)
+transform = Transform3D(-4.37114e-08, 0, -0.999999, 0, 0.999999, 0, 0.999999, 0, -4.37113e-08, 16.7028, -3.35276e-08, -4.56132)
 
 [node name="Spinner" parent="Score-ables" instance=ExtResource("12_nxtf3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.28382, -3.35276e-08, -13.4866)
+transform = Transform3D(0.98995, 0, -0.707107, 0, 1, 0, 0.989949, 0, 0.707107, 15.1299, -3.35276e-08, -2.78929)
 
 [node name="Rollover" parent="Score-ables" instance=ExtResource("16_eqi58")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.60312, -3.35276e-08, -8.79148)
 
-[node name="SlingshotL" parent="Score-ables" instance=ExtResource("9_rtf1l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4081, 4.76837e-07, -8.00605)
-force = 5.0
-
-[node name="SlingshotR" parent="Score-ables" instance=ExtResource("10_x1ybv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.22804, 0.467458, -8.925)
-force = 5.0
-
-[node name="Scoop" parent="Score-ables" instance=ExtResource("11_gfm3w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.255, 0.0418134, -7.66448)
-
-[node name="Target_Bank" parent="Score-ables" instance=ExtResource("14_mdd4t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.57907, -3.35276e-08, -9.04002)
-
 [node name="WallSling1" parent="Score-ables" instance=ExtResource("15_vy1hk")]
-transform = Transform3D(-0.874535, 0, -0.484962, 0, 1, 0, 0.484962, 0, -0.874535, -8.32685, 0, -6.50328)
+transform = Transform3D(0.3, 0, -0.519615, 0, 0.6, 0, 0.519615, 0, 0.3, 6.1526, 0, 1.57333)
 force = 10.0
 
-[node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -0.0248961, 3.88098, -0.416903)
+[node name="WallSling1" parent="Score-ables/WallSling1" instance=ExtResource("15_vy1hk")]
+transform = Transform3D(0.599999, 0, -2.98023e-08, 0, 0.6, 0, 0, 0, 0.6, -11.1061, 3.94881e-07, -9.84165)
+force = 10.0
 
-[node name="BallManager" parent="." node_paths=PackedStringArray("spawnLocation", "scoreManager") instance=ExtResource("17_ijqd7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0248961, 0.525077, -1.58226)
+[node name="scoreManager" type="Node3D" parent="." node_paths=PackedStringArray("triggers")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("5_rvokj")
+triggers = [NodePath("../PlayerControlledObjects/FlipperLMiddle"), NodePath("../PlayerControlledObjects/movingwall"), NodePath("../PlayerControlledObjects/FlipperRUpper")]
+scoreThresholds = Array[float]([100.0, 200.0, 300.0, 400.0])
+
+[node name="Background" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Background"]
+transform = Transform3D(5.57309, 0, 0, 0, 0.999999, 3.12639e-13, 0, -3.01981e-14, 8.77011, 1.35726, 8.16296e-08, -1.25696)
+mesh = SubResource("PlaneMesh_gldma")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Background/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Background/MeshInstance3D/StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.900164, 0)
+shape = SubResource("BoxShape3D_wpxcd")
+
+[node name="meshtop" type="MeshInstance3D" parent="Background"]
+transform = Transform3D(4.73682, 0, 0, 0, 0.999998, 8.52651e-14, 0, -8.17124e-14, 2.40526, 2.34089, -2.18477e-07, -11.3268)
+mesh = SubResource("PlaneMesh_gldma")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Background/meshtop"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Background/meshtop/StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.900164, 0)
+shape = SubResource("BoxShape3D_wpxcd")
+
+[node name="meshtop2" type="MeshInstance3D" parent="Background"]
+transform = Transform3D(0.971672, 0, 0, 0, 0.999997, 3.41061e-13, 0, -1.06581e-13, 5.67965, -4.77167, 1.73365e-07, 1.82119)
+mesh = SubResource("PlaneMesh_gldma")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Background/meshtop2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Background/meshtop2/StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.900164, 0)
+shape = SubResource("BoxShape3D_wpxcd")
+
+[node name="Ceil" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999999, -2.98023e-08, 0, 2.98023e-08, 0.999999, 0, 1.21884, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ceil"]
+transform = Transform3D(5.57309, 0, 0, 0, 0.999999, 3.12639e-13, 0, -3.01981e-14, 8.77011, 1.35726, 8.16296e-08, -1.25696)
+visible = false
+mesh = SubResource("PlaneMesh_gldma")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ceil/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ceil/MeshInstance3D/StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.900164, 0)
+shape = SubResource("BoxShape3D_wpxcd")
+
+[node name="meshtop" type="MeshInstance3D" parent="Ceil"]
+transform = Transform3D(4.73682, 0, 0, 0, 0.999998, 8.52651e-14, 0, -8.17124e-14, 2.40526, 2.34089, -2.18477e-07, -11.3268)
+visible = false
+mesh = SubResource("PlaneMesh_gldma")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ceil/meshtop"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ceil/meshtop/StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.900164, 0)
+shape = SubResource("BoxShape3D_wpxcd")
+
+[node name="meshtop2" type="MeshInstance3D" parent="Ceil"]
+transform = Transform3D(0.971672, 0, 0, 0, 0.999997, 3.41061e-13, 0, -1.06581e-13, 5.67965, -4.77167, 1.73365e-07, 1.82119)
+visible = false
+mesh = SubResource("PlaneMesh_gldma")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ceil/meshtop2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ceil/meshtop2/StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.900164, 0)
+shape = SubResource("BoxShape3D_wpxcd")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.18865, 0.982044, 0, -0.982044, 0.18865, 9, 0, 0)
+
+[node name="ballManagerstuff" type="Node3D" parent="."]
+
+[node name="NozelReset" parent="ballManagerstuff" node_paths=PackedStringArray("ballHolder") instance=ExtResource("16_dh66i")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.02445, 0.293953, -12.197)
+ballHolder = NodePath("../Marker3D")
+
+[node name="Marker3D" type="Marker3D" parent="ballManagerstuff"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 6.68932, 0.375266, 5.0924)
+
+[node name="BallManager" parent="ballManagerstuff" node_paths=PackedStringArray("spawnLocation", "scoreManager") instance=ExtResource("17_ijqd7")]
+transform = Transform3D(50, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, -0.0248961, -0.361495, 7.75978)
 ballPrefab = ExtResource("6_1wsf4")
 spawnLocation = NodePath("../Marker3D")
-scoreManager = NodePath("../scoreManager")
+scoreManager = NodePath("../../scoreManager")
+
+[connection signal="ballEntered" from="ballManagerstuff/NozelReset" to="ballManagerstuff/BallManager" method="resetBall"]

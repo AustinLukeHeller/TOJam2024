@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cd1g0fc670suc"]
+[gd_scene load_steps=27 format=3 uid="uid://cd1g0fc670suc"]
 
 [ext_resource type="Script" path="res://scripts/CameraControls.gd" id="1_2eqfg"]
 [ext_resource type="Script" path="res://scenes/FollowAtOffset.gd" id="1_12ctm"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dxae7bp5pgx3d" path="res://Models/Tube_Tip.glb" id="5_cu2mp"]
 [ext_resource type="PackedScene" uid="uid://dmqj50k7hhpqm" path="res://prefabs/enemy_tank.tscn" id="7_462bu"]
 [ext_resource type="Script" path="res://scenes/EnemySpawner.gd" id="7_wwpjv"]
+[ext_resource type="Texture2D" uid="uid://di4eielkomy51" path="res://textures/warGround2.png" id="9_hu5b3"]
 [ext_resource type="PackedScene" uid="uid://c8l6swj1rh2m2" path="res://scenes/2DUIStuff.tscn" id="13_wp4q7"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_3vop3"]
@@ -45,6 +46,13 @@ texture_filter = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xk8k2"]
 size = Vector3(1.9967, 0.500366, 2.007)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iwrrq"]
+albedo_texture = ExtResource("9_hu5b3")
+detail_enabled = true
+detail_blend_mode = 1
+detail_albedo = ExtResource("9_hu5b3")
+texture_filter = 0
 
 [sub_resource type="BoxMesh" id="BoxMesh_nqb4f"]
 
@@ -106,7 +114,7 @@ shape = SubResource("BoxShape3D_xk8k2")
 [node name="Ground Plane2" type="CSGMesh3D" parent="Environment"]
 transform = Transform3D(9.92422, 0, 0, 0, 1.13827, -0.178074, 0, 0.0861857, 2.35184, 0.0280683, 0.260148, -5.92112)
 mesh = SubResource("PlaneMesh_f0y4l")
-material = SubResource("StandardMaterial3D_lxuba")
+material = SubResource("StandardMaterial3D_iwrrq")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Environment/Ground Plane2"]
 

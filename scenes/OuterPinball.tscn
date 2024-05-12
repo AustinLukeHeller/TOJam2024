@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cd1g0fc670suc"]
+[gd_scene load_steps=35 format=3 uid="uid://cd1g0fc670suc"]
 
 [ext_resource type="Script" path="res://scripts/CameraControls.gd" id="1_2eqfg"]
 [ext_resource type="Script" path="res://scenes/FollowAtOffset.gd" id="1_12ctm"]
@@ -10,7 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://cnu4nkv7etvhw" path="res://textures/warGround.png" id="4_5pmuc"]
 [ext_resource type="PackedScene" uid="uid://dxae7bp5pgx3d" path="res://Models/Tube_Tip.glb" id="5_cu2mp"]
 [ext_resource type="PackedScene" uid="uid://yoeltv4eef8i" path="res://spout 2.tscn" id="5_xkati"]
+[ext_resource type="Material" path="res://materials/shiny_steel_mat.tres" id="6_8imxo"]
 [ext_resource type="PackedScene" uid="uid://dmqj50k7hhpqm" path="res://prefabs/enemy_tank.tscn" id="7_462bu"]
+[ext_resource type="PackedScene" uid="uid://ycvnj7evtt1w" path="res://scenes/PinballObjects/plunger.tscn" id="7_q1ltl"]
 [ext_resource type="Script" path="res://scenes/EnemySpawner.gd" id="7_wwpjv"]
 [ext_resource type="Texture2D" uid="uid://di4eielkomy51" path="res://textures/warGround2.png" id="9_hu5b3"]
 [ext_resource type="Texture2D" uid="uid://cjgld4ingdqns" path="res://Sprites/bg.png" id="10_pwfs5"]
@@ -24,6 +26,11 @@
 resource_local_to_scene = true
 shading_mode = 0
 albedo_texture = ExtResource("1_x1yod")
+
+[sub_resource type="SphereMesh" id="SphereMesh_rn52p"]
+material = ExtResource("6_8imxo")
+radius = 0.2
+height = 0.4
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k1xe7"]
 size = Vector3(0.165421, 0.404846, 0.243347)
@@ -79,7 +86,7 @@ maxAngle = 65.0
 turnAccel = 70.0
 turnMaxSpeed = 100.0
 bulletPrefab = ExtResource("2_abllf")
-bulletSpeed = 15.0
+bulletSpeed = 30.0
 
 [node name="Screen Plane" type="CSGMesh3D" parent="Tank"]
 transform = Transform3D(0.0922482, 0, 0, 0, 0.0813913, -0.0795569, 0, 0.0795569, 0.0813913, -0.00923048, -0.0479905, -0.0563318)
@@ -89,14 +96,27 @@ material = SubResource("StandardMaterial3D_jpba1")
 [node name="body" parent="Tank" instance=ExtResource("3_jo2kc")]
 transform = Transform3D(-1.52668e-08, -1.5634e-09, -0.205979, -0.0209836, 0.204908, 0, 0.204908, 0.0209836, -1.53467e-08, 0.0936567, -0.168861, -0.166891)
 
+[node name="Plunger" parent="Tank" instance=ExtResource("7_q1ltl")]
+transform = Transform3D(-0.0606628, 7.12737e-09, 4.00389e-16, 0, -2.06328e-09, 0.0606628, 9.15983e-09, 0.0472024, 2.65165e-09, -0.00448477, -0.0026035, -0.205514)
+pull_speed = 0.1
+max_pullback = 0.04
+
 [node name="default3" parent="Tank" instance=ExtResource("5_xkati")]
-transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0.0203006, -0.0176734, -0.170846)
+transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0.0203006, -0.0181374, -0.170846)
 
 [node name="default2" parent="Tank/default3" instance=ExtResource("5_cu2mp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.06196, 0.225974, -0.574507)
 
+[node name="Ball" type="Node3D" parent="Tank/default3/default2"]
+transform = Transform3D(1, 2.31406e-29, 1.06581e-14, -4.44089e-15, 1, 0, 3.55271e-15, -5.29396e-22, 1, -0.343831, -0.0516562, 0.305577)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tank/default3/default2/Ball"]
+material_override = ExtResource("6_8imxo")
+mesh = SubResource("SphereMesh_rn52p")
+
 [node name="launch point" type="Node3D" parent="Tank/default3/default2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.305577)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625636, 0, 0.305577)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tank"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000119889, -0.14679, -0.0205384)
@@ -224,7 +244,6 @@ texture = ExtResource("10_pwfs5")
 
 [node name="Tree" type="Sprite3D" parent="Environment"]
 transform = Transform3D(0.842266, 0, 0, 0, 1.15118, 0, 0, 0, 1, 1.47235, 0.411531, -2.96438)
-shaded = true
 texture_filter = 0
 texture = ExtResource("11_d7a0x")
 
@@ -235,8 +254,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0430911, 0, 0.00170946)
 shape = SubResource("BoxShape3D_7tt0t")
 
 [node name="Tree2" type="Sprite3D" parent="Environment"]
-transform = Transform3D(0.842266, 0, 0, 0, 1.15118, 0, 0, 0, 1, -2.69287, 0.411531, -4.11052)
-shaded = true
+transform = Transform3D(0.842266, 0, 0, 0, 1.15118, 0, 0, 0, 0.999999, -2.69287, 0.411531, -4.11052)
 texture_filter = 0
 texture = ExtResource("11_d7a0x")
 
@@ -248,7 +266,6 @@ shape = SubResource("BoxShape3D_7tt0t")
 
 [node name="Tree8" type="Sprite3D" parent="Environment"]
 transform = Transform3D(0.842266, 0, 0, 0, 1.15118, 0, 0, 0, 0.999999, -0.941559, 0.192866, -0.0397296)
-shaded = true
 texture_filter = 0
 texture = ExtResource("11_d7a0x")
 
@@ -260,7 +277,6 @@ shape = SubResource("BoxShape3D_7tt0t")
 
 [node name="Tree9" type="Sprite3D" parent="Environment"]
 transform = Transform3D(0.842266, 0, 0, 0, 1.15118, 0, 0, 0, 0.999999, 0.982815, 0.192229, -0.00397968)
-shaded = true
 texture_filter = 0
 texture = ExtResource("11_d7a0x")
 
@@ -272,7 +288,6 @@ shape = SubResource("BoxShape3D_7tt0t")
 
 [node name="Tree12" type="Sprite3D" parent="Environment"]
 transform = Transform3D(0.842266, 0, 0, 0, 1.15118, 0, 0, 0, 0.999999, 1.49586, 0.192229, -1.04828)
-shaded = true
 texture_filter = 0
 texture = ExtResource("11_d7a0x")
 
@@ -284,7 +299,6 @@ shape = SubResource("BoxShape3D_7tt0t")
 
 [node name="Tree10" type="Sprite3D" parent="Environment"]
 transform = Transform3D(0.842266, 0, 0, 0, 1.15118, 0, 0, 0, 0.999999, 2.92786, 0.325474, -2.28237)
-shaded = true
 texture_filter = 0
 texture = ExtResource("11_d7a0x")
 
@@ -296,7 +310,6 @@ shape = SubResource("BoxShape3D_7tt0t")
 
 [node name="Tree11" type="Sprite3D" parent="Environment"]
 transform = Transform3D(0.842266, 0, 0, 0, 1.15118, 0, 0, 0, 0.999999, -2.31318, 0.335072, -1.8569)
-shaded = true
 texture_filter = 0
 texture = ExtResource("11_d7a0x")
 
@@ -308,7 +321,6 @@ shape = SubResource("BoxShape3D_7tt0t")
 
 [node name="Tree7" type="Sprite3D" parent="Environment"]
 transform = Transform3D(0.842266, 0, 0, 0, 1.15118, 0, 0, 0, 0.999999, 0.300345, 0.752144, -7.60372)
-shaded = true
 texture_filter = 0
 texture = ExtResource("11_d7a0x")
 
@@ -320,7 +332,6 @@ shape = SubResource("BoxShape3D_7tt0t")
 
 [node name="Tree3" type="Sprite3D" parent="Environment"]
 transform = Transform3D(0.842266, 0, 0, 0, 1.15118, 0, 0, 0, 0.999999, 4.38667, 0.726145, -7.12247)
-shaded = true
 texture_filter = 0
 texture = ExtResource("11_d7a0x")
 
@@ -332,7 +343,6 @@ shape = SubResource("BoxShape3D_7tt0t")
 
 [node name="Tree4" type="Sprite3D" parent="Environment"]
 transform = Transform3D(0.459224, 0, -0.838289, 0, 1.15118, 0, 0.706063, 0, 0.545224, 5.15349, 0.726145, -6.38678)
-shaded = true
 texture_filter = 0
 texture = ExtResource("11_d7a0x")
 
@@ -343,8 +353,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0430911, 0, 0.00170946)
 shape = SubResource("BoxShape3D_7tt0t")
 
 [node name="Tree5" type="Sprite3D" parent="Environment"]
-transform = Transform3D(-0.715587, 0, -0.52743, 0, 1.15118, 0, 0.444236, 0, -0.849598, -5.21868, 0.726145, -6.18628)
-shaded = true
+transform = Transform3D(-0.715587, 0, -0.52743, 0, 1.15118, 0, 0.444236, 0, -0.849597, -5.21868, 0.726145, -6.18628)
 texture_filter = 0
 texture = ExtResource("11_d7a0x")
 
@@ -356,7 +365,6 @@ shape = SubResource("BoxShape3D_7tt0t")
 
 [node name="Tree6" type="Sprite3D" parent="Environment"]
 transform = Transform3D(-0.81188, 0, -0.266178, 0, 1.15118, 0, 0.224193, 0, -0.963923, -3.56426, 0.726144, -7.33624)
-shaded = true
 texture_filter = 0
 texture = ExtResource("11_d7a0x")
 
@@ -368,7 +376,6 @@ shape = SubResource("BoxShape3D_uj80q")
 
 [node name="SandBags" type="Sprite3D" parent="Environment"]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -1.12471, 0.131173, -2.33886)
-shaded = true
 texture_filter = 0
 texture = ExtResource("12_iiuha")
 
@@ -380,7 +387,6 @@ shape = SubResource("BoxShape3D_uj80q")
 
 [node name="SandBags9" type="Sprite3D" parent="Environment"]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -1.4305, 0.131173, -0.834334)
-shaded = true
 texture_filter = 0
 texture = ExtResource("12_iiuha")
 
@@ -392,7 +398,6 @@ shape = SubResource("BoxShape3D_uj80q")
 
 [node name="SandBags10" type="Sprite3D" parent="Environment"]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 1.71452, 0.131173, -0.364649)
-shaded = true
 texture_filter = 0
 texture = ExtResource("12_iiuha")
 
@@ -403,8 +408,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0157166, -0.0365295, 0.0067
 shape = SubResource("BoxShape3D_uj80q")
 
 [node name="SandBags2" type="Sprite3D" parent="Environment"]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.154999, 0.131173, -3.32148)
-shaded = true
+transform = Transform3D(0.8, 0, 0, 0, 0.799999, 0, 0, 0, 0.799999, 0.154999, 0.131173, -3.32148)
 texture_filter = 0
 texture = ExtResource("12_iiuha")
 
@@ -416,7 +420,6 @@ shape = SubResource("BoxShape3D_uj80q")
 
 [node name="SandBags3" type="Sprite3D" parent="Environment"]
 transform = Transform3D(0.8, 0, 0, 0, 0.799999, 0, 0, 0, 0.799999, -0.52706, -0.0710529, 0.188098)
-shaded = true
 texture_filter = 0
 texture = ExtResource("12_iiuha")
 
@@ -428,7 +431,6 @@ shape = SubResource("BoxShape3D_uj80q")
 
 [node name="SandBags4" type="Sprite3D" parent="Environment"]
 transform = Transform3D(0.8, 0, 0, 0, 0.799999, 0, 0, 0, 0.799999, 0.62462, -0.053353, 0.188098)
-shaded = true
 texture_filter = 0
 texture = ExtResource("12_iiuha")
 
@@ -440,7 +442,6 @@ shape = SubResource("BoxShape3D_uj80q")
 
 [node name="SandBags5" type="Sprite3D" parent="Environment"]
 transform = Transform3D(0.8, 0, 0, 0, 0.799999, 0, 0, 0, 0.799999, 2.19992, 0.131173, -1.95951)
-shaded = true
 texture_filter = 0
 texture = ExtResource("12_iiuha")
 
@@ -452,7 +453,6 @@ shape = SubResource("BoxShape3D_uj80q")
 
 [node name="SandBags6" type="Sprite3D" parent="Environment"]
 transform = Transform3D(0.8, 0, 0, 0, 0.799999, 0, 0, 0, 0.799999, -3.14326, 0.131173, -3.10075)
-shaded = true
 texture_filter = 0
 texture = ExtResource("12_iiuha")
 
@@ -464,7 +464,6 @@ shape = SubResource("BoxShape3D_uj80q")
 
 [node name="SandBags7" type="Sprite3D" parent="Environment"]
 transform = Transform3D(0.8, 0, 0, 0, 0.799999, 0, 0, 0, 0.799999, 3.18562, 0.131173, -4.02469)
-shaded = true
 texture_filter = 0
 texture = ExtResource("12_iiuha")
 
@@ -476,7 +475,6 @@ shape = SubResource("BoxShape3D_uj80q")
 
 [node name="SandBags8" type="Sprite3D" parent="Environment"]
 transform = Transform3D(0.8, 0, 0, 0, 0.799999, 0, 0, 0, 0.799999, -1.60678, 0.131173, -3.85447)
-shaded = true
 texture_filter = 0
 texture = ExtResource("12_iiuha")
 
@@ -492,7 +490,7 @@ shape = SubResource("BoxShape3D_uj80q")
 transform = Transform3D(0.999998, 0.0012702, -0.00119698, 0, 0.685818, 0.727773, 0.00174533, -0.727771, 0.685817, 0.0033823, 0.16704, -0.130847)
 
 [node name="Tank View" type="Node3D" parent="CameraStuff"]
-transform = Transform3D(1, 0, 0, 0, 0.880609, 0.473843, 0, -0.473843, 0.880609, 0, 0.252935, 0.0892667)
+transform = Transform3D(1, 0, 0, 0, 0.880609, 0.473843, 0, -0.473843, 0.880609, 0.0324134, 0.307824, 0.101359)
 
 [node name="OffsetManager" type="Node3D" parent="CameraStuff" node_paths=PackedStringArray("targetNode")]
 script = ExtResource("1_12ctm")

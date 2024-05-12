@@ -9,7 +9,9 @@ extends ScoreReliant
 var activated: bool = false
 var velocity2: float = 0
 var loaded: bool = true
-
+var fakeball: Node
+func _ready():
+	fakeball = get_node("default3/default2/Ball")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if(Input.is_key_pressed(KEY_2)):
@@ -32,7 +34,13 @@ func _spawn_bullet():
 	var spawnPoint = get_node("default3/default2/launch point")
 	var newBullet = load(bulletPrefab.resource_path).instantiate()
 	get_parent().add_child(newBullet)
+	newBullet.global_position = spawnPoint.global_position
 	newBullet.throw(spawnPoint.global_position, transform.basis.z*bulletSpeed)
 	newBullet.name="outerball"
+	loaded=false
+	fakeball.visible=false
+func _load_bullet():
+	loaded=true
+	fakeball.visible=true
 
 

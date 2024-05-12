@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bqjvyacdnfhl0" path="res://Sprites/Textures_tank.png" id="2_dscgc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w08ri"]
-transparency = 4
+transparency = 1
 depth_draw_mode = 1
 albedo_texture = ExtResource("2_dscgc")
 texture_filter = 0

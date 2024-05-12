@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://tj0nec03dkk1"]
+[gd_scene load_steps=6 format=3 uid="uid://bj20cl1e123ci"]
 
 [ext_resource type="PhysicsMaterial" path="res://materials/ball_phymat.tres" id="1_5uh7r"]
 [ext_resource type="Script" path="res://scenes/PinballObjects/Ball.gd" id="2_fynah"]

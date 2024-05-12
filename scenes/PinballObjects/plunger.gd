@@ -1,4 +1,4 @@
-extends AnimatableBody3D
+extends CharacterBody3D
 @onready var sound = $Sound
 @export var push_speed := 10.0
 @export var pull_speed := 2.0

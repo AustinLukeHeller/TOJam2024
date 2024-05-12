@@ -1,4 +1,4 @@
-extends AnimatableBody3D
+extends CharacterBody3D
 
 var Player: Node3D
 @export var moveSpeed: float

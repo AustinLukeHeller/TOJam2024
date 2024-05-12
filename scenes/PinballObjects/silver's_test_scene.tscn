@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmj2kthm32h2b"]
+[gd_scene load_steps=9 format=3 uid="uid://cmj2kthm32h2b"]
 
 [ext_resource type="PackedScene" uid="uid://bv6avaer22yl3" path="res://scenes/PinballObjects/flipper_l.tscn" id="1_guju8"]
 [ext_resource type="PackedScene" uid="uid://c7wpc6x1n1ffu" path="res://scenes/PinballObjects/flipper_r.tscn" id="2_hi4ii"]
 [ext_resource type="PackedScene" uid="uid://ycvnj7evtt1w" path="res://scenes/PinballObjects/plunger.tscn" id="3_nuor2"]
-[ext_resource type="PackedScene" uid="uid://ckxfoxm3tn1ov" path="res://scenes/PinballObjects/moving_wall_sling.tscn" id="4_5gw45"]
+[ext_resource type="PackedScene" uid="uid://b5ar2wg6c4bnl" path="res://scenes/PinballObjects/moving_wall_sling.tscn" id="4_5gw45"]
 [ext_resource type="Script" path="res://scenes/ScoreManager.gd" id="5_rvokj"]
+[ext_resource type="PackedScene" uid="uid://bj20cl1e123ci" path="res://scenes/PinballObjects/ball.tscn" id="6_1wsf4"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kt630"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h6bfa"]
+size = Vector3(1.9104, 0.556763, 1.85669)
 
 [node name="Silver\'s Test scene" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.864357, -0.0985758, 2.53675)
@@ -43,5 +49,23 @@ horDelta = 5
 
 [node name="scoreManager" type="Node3D" parent="." node_paths=PackedStringArray("triggers")]
 script = ExtResource("5_rvokj")
-triggers = [NodePath("../PlayerControlledObjects/FlipperRMiddle"), NodePath("../PlayerControlledObjects/FlipperRUpper"), NodePath("../PlayerControlledObjects/FlipperL2"), NodePath("../PlayerControlledObjects/movingwall")]
+triggers = [NodePath("../PlayerControlledObjects/FlipperL2"), NodePath("../PlayerControlledObjects/FlipperRMiddle"), NodePath("../PlayerControlledObjects/FlipperRUpper"), NodePath("../PlayerControlledObjects/movingwall")]
 scoreThresholds = Array[float]([100.0, 200.0, 300.0, 400.0])
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(9.29588, 0, 0, 0, 1, 0, 0, 0, 6.37305, 0, 0, -0.238189)
+mesh = SubResource("PlaneMesh_kt630")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="CSGMesh3D"]
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGMesh3D/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0345458, -0.221619, -0.0640869)
+shape = SubResource("BoxShape3D_h6bfa")
+
+[node name="Ball2" parent="." instance=ExtResource("6_1wsf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.179649, 0.662108, -0.169433)
+script = null
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.18865, 0.982044, 0, -0.982044, 0.18865, 9, 0, 0)

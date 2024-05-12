@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://clo8hfyis78le"]
+[gd_scene load_steps=14 format=3 uid="uid://bjb1cvcoqqla3"]
 
 [ext_resource type="Script" path="res://scenes/PinballObjects/slingshot.gd" id="1_2vvt4"]
 
@@ -152,7 +152,7 @@ _data = {
 "hit": SubResource("Animation_oe5sq")
 }
 
-[node name="SlingshotL" type="AnimatableBody3D"]
+[node name="SlingshotL" type="CharacterBody3D"]
 script = ExtResource("1_2vvt4")
 
 [node name="ShotOrigin" type="Marker3D" parent="."]

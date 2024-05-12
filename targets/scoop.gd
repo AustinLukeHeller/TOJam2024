@@ -5,7 +5,7 @@ extends Node3D
 @export var enter_sound : AudioStreamWAV
 @export var exit_sound : AudioStreamWAV
 @export var janky_bugfix: bool = true
-@export var score_event := "Scoop Activated"
+@export var score:= 100
 @onready var enter_audio := $Enter_Audio
 @onready var exit_audio := $Exit_Audio
 @onready var throw := $Throw
@@ -20,7 +20,7 @@ func _ready():
 func _on_area_3d_body_entered(body: RigidBody3D):
 	if !active:
 		active = true
-		Score.event(score_event)
+		Score.add(score)
 		if !Global.mute and enter_audio.stream != null:
 			enter_audio.play()
 		if janky_bugfix:

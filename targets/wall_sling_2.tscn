@@ -116,6 +116,8 @@ size = Vector3(0.2, 0.5, 1)
 
 [node name="WallSling2" type="AnimatableBody3D"]
 script = ExtResource("1_mlyc8")
+force = null
+score_event = null
 
 [node name="ShotOrigin" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 2.70179, 0.152668, -1.97677)

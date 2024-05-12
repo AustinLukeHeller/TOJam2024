@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://cr4r3j0284wod"]
+[gd_scene load_steps=10 format=3 uid="uid://cr4r3j0284wod"]
 
 [ext_resource type="Script" path="res://targets/spinner.gd" id="1_82nwr"]
-[ext_resource type="AudioStream" uid="uid://cydqanwk3xrru" path="res://assets/sounds/SOUND131.WAV" id="2_bnmy1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h6kgy"]
 resource_name = "ID9.004"
@@ -102,7 +101,6 @@ size = Vector3(0.5, 0.5, 0.2)
 
 [node name="Spinner" type="Node3D"]
 script = ExtResource("1_82nwr")
-flip_sound = ExtResource("2_bnmy1")
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.253, 0)

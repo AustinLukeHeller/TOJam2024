@@ -1,7 +1,7 @@
 extends StaticBody3D
 
 @export var hit := false
-@export var score_event := "Drop Target Down"
+@export var score:= 5
 
 @onready var animation_player := $AnimationPlayer
 @onready var hit_audio := $Hit
@@ -46,5 +46,5 @@ func reset():
 
 func _on_area_3d_body_entered(_body):
 	if !hit:
-		Score.event(score_event)
+		Score.add(score)
 		on_hit()

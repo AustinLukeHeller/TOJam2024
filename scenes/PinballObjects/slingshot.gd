@@ -2,7 +2,7 @@ extends ScoreReliant
 
 @export var fire: AudioStreamWAV
 @export var force := 10.0
-@export var score_event := "Rebound"
+@export var score := 10
 @onready var animation_player = $AnimationPlayer
 @onready var fire_sound = $FireSound
 @onready var shot_origin = $ShotOrigin
@@ -42,7 +42,7 @@ func hit():
 func _on_area_3d_body_entered(body: RigidBody3D):
 	if !animation_player.is_playing():
 		hit()
-		Score.event(score_event)
+		Score.add(score)
 		var direction = (body.global_position - shot_origin.global_position)
 		direction.y = 0
 		direction = direction.normalized()

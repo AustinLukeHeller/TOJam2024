@@ -1,7 +1,7 @@
 extends Node3D
 
 @onready var targets = get_children()  # This gets all the child nodes under Targets.
-@export var score_event := "All Targets Down"
+@export var score :=50
 signal test_complete
 
 var total_targets = 0
@@ -20,7 +20,7 @@ func _on_target_hit():
 		for target in targets:
 			target.twinkle()
 		await get_tree().create_timer(3).timeout
-		Score.event(score_event)
+		Score.add(score)
 		reset_all_targets()
 		hit_targets = 0
 

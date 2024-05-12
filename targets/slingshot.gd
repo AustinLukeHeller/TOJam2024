@@ -28,7 +28,7 @@ func hit():
 func _on_area_3d_body_entered(body: RigidBody3D):
 	if !animation_player.is_playing():
 		hit()
-		Score.event(score_event)
+		Score.add(score)
 		var direction = (body.global_position - shot_origin.global_position)
 		direction.y = 0
 		direction = direction.normalized()

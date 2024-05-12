@@ -3,7 +3,7 @@ extends StaticBody3D
 @export var hit := false
 @export var hit_sound: AudioStreamWAV
 @export var hit_while_down_sound: AudioStreamWAV
-@export var score_event := "Standup Target Hit"
+@export var score:= 50
 @onready var animation_player := $AnimationPlayer
 @onready var target_hit_audio := $Target_Hit
 @onready var target_hit_again := $Target_Hit_Again
@@ -57,7 +57,7 @@ func twinkle():
 
 
 func _on_area_3d_body_entered(_body):
-	Score.event(score_event)
+	Score.add(score)
 	emit_signal("target_hit")
 	if !hit:
 		on_hit()

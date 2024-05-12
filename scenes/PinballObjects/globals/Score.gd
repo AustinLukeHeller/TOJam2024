@@ -31,6 +31,7 @@ func event(e_name: String):
 
 func add(val: int):
 	_score += val
+	print("new score:", Score.get_score())
 	if _score > _high_score and !cur_is_high_score:
 		emit_signal("high_score")
 		cur_is_high_score = true

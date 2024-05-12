@@ -1,11 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://bo2cgdnhhvwhu"]
+[gd_scene load_steps=12 format=3 uid="uid://bo2cgdnhhvwhu"]
 
 [ext_resource type="Script" path="res://targets/space_warp_rollover.gd" id="1_c6bgr"]
-[ext_resource type="Material" uid="uid://ljplomrcu0pu" path="res://assets/materials/black_mat.tres" id="2_pfdnq"]
-[ext_resource type="Material" uid="uid://chw0h4pix1l4c" path="res://assets/materials/lights/green_dim.tres" id="3_hwlu2"]
-[ext_resource type="Material" uid="uid://d2rrfi65qhoya" path="res://assets/materials/lights/green_lit.tres" id="4_l2bgm"]
-[ext_resource type="AudioStream" uid="uid://bq8m01bqf2rn5" path="res://assets/sounds/SOUND55.WAV" id="5_2pjwy"]
-[ext_resource type="Material" uid="uid://cuhharvp2uo6l" path="res://assets/materials/wood.tres" id="6_74pmf"]
+[ext_resource type="Material" path="res://materials/lights/green_dim.tres" id="3_hwlu2"]
+[ext_resource type="Material" path="res://materials/lights/green_lit.tres" id="4_l2bgm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4i68"]
 resource_name = "ID9.011"
@@ -99,14 +96,12 @@ radius = 0.15
 [node name="SpaceWarpRollover" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 script = ExtResource("1_c6bgr")
-rollover_sound = ExtResource("5_2pjwy")
 metadata/_edit_group_ = true
 
 [node name="Space_Warp_Outer" type="MeshInstance3D" parent="."]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0.00985904, 3.33786e-06)
 mesh = SubResource("ArrayMesh_kvrfa")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("2_pfdnq")
 
 [node name="Unlit" type="MeshInstance3D" parent="."]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0.0356162, -3.33786e-06)
@@ -123,7 +118,6 @@ surface_material_override/0 = ExtResource("4_l2bgm")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09, 0)
-material_overlay = ExtResource("6_74pmf")
 mesh = SubResource("CylinderMesh_vn4yv")
 
 [node name="space_warp_rollover" type="Node3D" parent="."]
@@ -134,10 +128,9 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="Rollover_Audio" type="AudioStreamPlayer3D" parent="Detection"]
-stream = ExtResource("5_2pjwy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Detection"]
 shape = SubResource("CylinderShape3D_ks0by")
 
-[connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered" flags=18]
-[connection signal="body_exited" from="Detection" to="." method="_on_detection_body_exited" flags=18]
+[connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_exited" from="Detection" to="." method="_on_detection_body_exited"]

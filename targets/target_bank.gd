@@ -4,7 +4,7 @@ extends Node3D
 @onready var targets = $Targets.get_children()  # This gets all the child nodes under Targets.
 @onready var light = $Light
 @onready var reset_audio = $Reset_Audio
-@export var score_events := ["Drop Targets Reset"]
+@export var score = 100
 signal test_complete
 
 var total_targets = 0
@@ -22,7 +22,7 @@ func _on_target_hit():
 	hit_targets += 1
 	if hit_targets >= total_targets:
 		await get_tree().create_timer(0.2).timeout
-		Score.event(score_events[min(reset_count, score_events.size() - 1)])
+		Score.add(score)
 		reset_all_targets()
 		hit_targets = 0
 		light.toggle()

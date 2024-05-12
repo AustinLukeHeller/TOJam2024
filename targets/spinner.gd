@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var flip_sound: AudioStreamWAV
-@export var score_event := "Fuel Spinner"
+@export var score:= 10
 @onready var animation_player = $AnimationPlayer
 @onready var flip_audio = $FlipAudio
 
@@ -25,6 +25,6 @@ func _on_backward_area_body_entered(_body):
 
 
 func _on_flip_audio_finished():
-	Score.event(score_event)
+	Score.add(score)
 	if animation_player.is_playing():
 		flip_audio.play()

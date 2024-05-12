@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cmj2kthm32h2b"]
+[gd_scene load_steps=11 format=3 uid="uid://cmj2kthm32h2b"]
 
 [ext_resource type="PackedScene" uid="uid://bv6avaer22yl3" path="res://scenes/PinballObjects/flipper_l.tscn" id="1_guju8"]
 [ext_resource type="PackedScene" uid="uid://c7wpc6x1n1ffu" path="res://scenes/PinballObjects/flipper_r.tscn" id="2_hi4ii"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://b5ar2wg6c4bnl" path="res://scenes/PinballObjects/moving_wall_sling.tscn" id="4_5gw45"]
 [ext_resource type="Script" path="res://scenes/ScoreManager.gd" id="5_rvokj"]
 [ext_resource type="PackedScene" uid="uid://bj20cl1e123ci" path="res://scenes/PinballObjects/ball.tscn" id="6_1wsf4"]
+[ext_resource type="PackedScene" uid="uid://cyfwe84l5a4im" path="res://targets/bumper_large.tscn" id="7_4ssm5"]
+[ext_resource type="PackedScene" uid="uid://b38ottfharoes" path="res://targets/bumper_small.tscn" id="8_tm13e"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kt630"]
 
@@ -49,7 +51,7 @@ horDelta = 5
 
 [node name="scoreManager" type="Node3D" parent="." node_paths=PackedStringArray("triggers")]
 script = ExtResource("5_rvokj")
-triggers = [NodePath("../PlayerControlledObjects/FlipperL2"), NodePath("../PlayerControlledObjects/FlipperRMiddle"), NodePath("../PlayerControlledObjects/FlipperRUpper"), NodePath("../PlayerControlledObjects/movingwall")]
+triggers = [NodePath("../PlayerControlledObjects/FlipperL2"), NodePath("../PlayerControlledObjects/FlipperRMiddle"), NodePath("../PlayerControlledObjects/movingwall"), NodePath("../PlayerControlledObjects/FlipperRUpper")]
 scoreThresholds = Array[float]([100.0, 200.0, 300.0, 400.0])
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]
@@ -69,3 +71,11 @@ script = null
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.18865, 0.982044, 0, -0.982044, 0.18865, 9, 0, 0)
+
+[node name="Score-ables" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.66744, 0.0567624, -1.65716)
+
+[node name="Bumper-Large" parent="Score-ables" instance=ExtResource("7_4ssm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84572, 0, 0.794965)
+
+[node name="Bumper-Small" parent="Score-ables" instance=ExtResource("8_tm13e")]

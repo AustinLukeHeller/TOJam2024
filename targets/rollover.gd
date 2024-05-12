@@ -2,7 +2,7 @@ extends Area3D
 
 
 @export var sound: AudioStreamWAV
-@export var score_event := "Rollover Target Activated"
+@export var score=10
 @onready var rollover_audio := $Rollover_Audio
 @onready var light := $Light
 
@@ -33,7 +33,7 @@ func tick(_tick):
 
 
 func _on_body_entered(_body):
-	Score.event(score_event)
+	Score.add(score)
 	if !Global.mute:
 		rollover_audio.play()
 	if active:

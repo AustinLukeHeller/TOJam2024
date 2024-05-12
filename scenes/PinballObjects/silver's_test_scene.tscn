@@ -1,23 +1,47 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmj2kthm32h2b"]
+[gd_scene load_steps=6 format=3 uid="uid://cmj2kthm32h2b"]
 
 [ext_resource type="PackedScene" uid="uid://bv6avaer22yl3" path="res://scenes/PinballObjects/flipper_l.tscn" id="1_guju8"]
 [ext_resource type="PackedScene" uid="uid://c7wpc6x1n1ffu" path="res://scenes/PinballObjects/flipper_r.tscn" id="2_hi4ii"]
 [ext_resource type="PackedScene" uid="uid://ycvnj7evtt1w" path="res://scenes/PinballObjects/plunger.tscn" id="3_nuor2"]
+[ext_resource type="PackedScene" uid="uid://ckxfoxm3tn1ov" path="res://scenes/PinballObjects/moving_wall_sling.tscn" id="4_5gw45"]
+[ext_resource type="Script" path="res://scenes/ScoreManager.gd" id="5_rvokj"]
 
 [node name="Silver\'s Test scene" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.864357, -0.0985758, 2.53675)
 
-[node name="FlipperL" parent="." instance=ExtResource("1_guju8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.67258, 0, 0.314582)
-
-[node name="FlipperR" parent="." instance=ExtResource("2_hi4ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1933, 0, 0.406202)
-
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.213184, 0.977012, 0, -0.977012, 0.213184, -0.809784, 3.05882, 1.04314)
+transform = Transform3D(1, 0, 0, 0, 0.21303, 0.977046, 0, -0.977046, 0.21303, -0.809784, 4.64636, 4.08537)
 fov = 115.1
 
-[node name="Plunger" parent="." instance=ExtResource("3_nuor2")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.164276, 0.0985758, 2.15638)
+[node name="PlayerControlledObjects" type="Node3D" parent="."]
+
+[node name="FlipperL2" parent="PlayerControlledObjects" instance=ExtResource("1_guju8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.00049, -0.024838, -5.3638)
+
+[node name="FlipperL" parent="PlayerControlledObjects" instance=ExtResource("1_guju8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.67258, 0, 0.314582)
+
+[node name="FlipperRMiddle" parent="PlayerControlledObjects" instance=ExtResource("2_hi4ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7064, 0, -4.5505)
+
+[node name="FlipperRUpper" parent="PlayerControlledObjects" instance=ExtResource("2_hi4ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65489, 0, -5.36846)
+
+[node name="FlipperR" parent="PlayerControlledObjects" instance=ExtResource("2_hi4ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1933, 0, 0.406202)
+
+[node name="Plunger" parent="PlayerControlledObjects" instance=ExtResource("3_nuor2")]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, -7.07548, 0.0985758, 2.15638)
 push_speed = 20.0
 pull_speed = 3.0
+
+[node name="movingwall" parent="PlayerControlledObjects" instance=ExtResource("4_5gw45")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.17734, 0.0985763, -2.82211)
+moveable = true
+speed = 1
+horDelta = 5
+
+[node name="scoreManager" type="Node3D" parent="." node_paths=PackedStringArray("triggers")]
+script = ExtResource("5_rvokj")
+triggers = [NodePath("../PlayerControlledObjects/FlipperRMiddle"), NodePath("../PlayerControlledObjects/FlipperRUpper"), NodePath("../PlayerControlledObjects/FlipperL2"), NodePath("../PlayerControlledObjects/movingwall")]
+scoreThresholds = Array[float]([100.0, 200.0, 300.0, 400.0])

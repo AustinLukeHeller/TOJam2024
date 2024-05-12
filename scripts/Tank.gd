@@ -24,3 +24,5 @@ func _process(delta):
 		rotation_degrees.y=clamp(rotation_degrees.y+velocity2*delta,-maxAngle,maxAngle)
 		if(abs(rotation_degrees.y)==maxAngle):
 			velocity2=0
+
+

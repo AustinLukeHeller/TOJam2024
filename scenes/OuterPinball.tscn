@@ -64,10 +64,8 @@ transform = Transform3D(0.0329931, 0, 0, 0, -4.31728e-09, 0.0414168, 0, -0.09876
 mesh = SubResource("CylinderMesh_dukq0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tank"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0154724, -0.0733948, 0.0422363)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0309448, -0.14679, 0.0844726)
 shape = SubResource("BoxShape3D_k1xe7")
-
-[node name="RigidBody3D" type="RigidBody3D" parent="Tank"]
 
 [node name="SubViewport" type="SubViewport" parent="."]
 own_world_3d = true

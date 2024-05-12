@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cy6oo55s6cwk8"
-path.s3tc="res://.godot/imported/explode.png-574ce655c57aa4cceb1917cd9222d188.s3tc.ctex"
+uid="uid://cjgld4ingdqns"
+path.s3tc="res://.godot/imported/bg.png-5046840dce817dc9e1d61a818df550fc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,15 +11,15 @@ metadata={
 
 [deps]
 
-source_file="res://Sprites/explode.png"
-dest_files=["res://.godot/imported/explode.png-574ce655c57aa4cceb1917cd9222d188.s3tc.ctex"]
+source_file="res://Sprites/bg.png"
+dest_files=["res://.godot/imported/bg.png-5046840dce817dc9e1d61a818df550fc.s3tc.ctex"]
 
 [params]
 
 compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
-compress/hdr_compression=0
+compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true

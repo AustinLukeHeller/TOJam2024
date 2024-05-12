@@ -29,7 +29,7 @@ func _process(delta):
 		if(loaded and Input.is_action_just_released("Launch")):
 			_spawn_bullet()
 func _spawn_bullet():
-	var spawnPoint = get_node("tube/default2")
+	var spawnPoint = get_node("tube/default2/launch point")
 	var newBullet = load(bulletPrefab.resource_path).instantiate()
 	get_parent().add_child(newBullet)
 	newBullet.throw(spawnPoint.global_position, transform.basis.z*bulletSpeed)

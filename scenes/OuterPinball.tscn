@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cd1g0fc670suc"]
+[gd_scene load_steps=28 format=3 uid="uid://cd1g0fc670suc"]
 
 [ext_resource type="Script" path="res://scripts/CameraControls.gd" id="1_2eqfg"]
 [ext_resource type="Script" path="res://scenes/FollowAtOffset.gd" id="1_12ctm"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dmqj50k7hhpqm" path="res://prefabs/enemy_tank.tscn" id="7_462bu"]
 [ext_resource type="Script" path="res://scenes/EnemySpawner.gd" id="7_wwpjv"]
 [ext_resource type="Texture2D" uid="uid://di4eielkomy51" path="res://textures/warGround2.png" id="9_hu5b3"]
+[ext_resource type="Texture2D" uid="uid://cjgld4ingdqns" path="res://Sprites/bg.png" id="10_pwfs5"]
 [ext_resource type="PackedScene" uid="uid://c8l6swj1rh2m2" path="res://scenes/2DUIStuff.tscn" id="13_wp4q7"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_3vop3"]
@@ -86,6 +87,9 @@ transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 
 [node name="default2" parent="Tank/tube" instance=ExtResource("5_cu2mp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.06196, 0.225974, -0.574507)
 
+[node name="launch point" type="Node3D" parent="Tank/tube/default2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.305577)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tank"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000310684, -0.14679, 0.0288696)
 shape = SubResource("BoxShape3D_k1xe7")
@@ -112,7 +116,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000793463, -0.249817, -0.00
 shape = SubResource("BoxShape3D_xk8k2")
 
 [node name="Ground Plane2" type="CSGMesh3D" parent="Environment"]
-transform = Transform3D(9.92422, 0, 0, 0, 1.13827, -0.178074, 0, 0.0861857, 2.35184, 0.0280683, 0.260148, -5.92112)
+transform = Transform3D(11.2491, 0, 0, 0, 1.13827, -0.178074, 0, 0.0861857, 2.35184, 0.0280683, 0.260148, -5.92112)
 mesh = SubResource("PlaneMesh_f0y4l")
 material = SubResource("StandardMaterial3D_iwrrq")
 
@@ -141,6 +145,74 @@ mesh = SubResource("BoxMesh_nqb4f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/wall2/StaticBody3D"]
 shape = SubResource("BoxShape3D_3qyen")
+
+[node name="Sprite3D" type="Sprite3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0638014, 1.06832, -8.34223)
+texture = ExtResource("10_pwfs5")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Environment"]
+transform = Transform3D(1.13812, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 1.22632, 1.06832, -8.34223)
+texture = ExtResource("10_pwfs5")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 2.51456, 1.06832, -8.34223)
+texture = ExtResource("10_pwfs5")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 3.79086, 1.06832, -8.34223)
+texture = ExtResource("10_pwfs5")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Environment"]
+transform = Transform3D(1.09698, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 5.08098, 1.06832, -8.34223)
+texture = ExtResource("10_pwfs5")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 6.36922, 1.06832, -8.34223)
+texture = ExtResource("10_pwfs5")
+
+[node name="Sprite3D15" type="Sprite3D" parent="Environment"]
+transform = Transform3D(0.805763, 0, -0.592238, 0, 0.999999, 0, 0.592237, 0, 0.805762, 7.52967, 1.06832, -7.99747)
+texture = ExtResource("10_pwfs5")
+
+[node name="Sprite3D16" type="Sprite3D" parent="Environment"]
+transform = Transform3D(0.805763, 0, -0.592238, 0, 0.999999, 0, 0.592237, 0, 0.805762, 8.54598, 1.06832, -7.25047)
+texture = ExtResource("10_pwfs5")
+
+[node name="Sprite3D17" type="Sprite3D" parent="Environment"]
+transform = Transform3D(0.805763, 0, -0.592238, 0, 0.999998, 0, 0.592237, 0, 0.805761, 9.58792, 1.06152, -6.48816)
+texture = ExtResource("10_pwfs5")
+
+[node name="Sprite3D7" type="Sprite3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -3.92019, 1.06832, -8.34223)
+texture = ExtResource("10_pwfs5")
+
+[node name="Sprite3D8" type="Sprite3D" parent="Environment"]
+transform = Transform3D(1.06042, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -2.65635, 1.06832, -8.34222)
+texture = ExtResource("10_pwfs5")
+
+[node name="Sprite3D9" type="Sprite3D" parent="Environment"]
+transform = Transform3D(1.02665, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -1.34976, 1.06832, -8.34054)
+texture = ExtResource("10_pwfs5")
+
+[node name="Sprite3D10" type="Sprite3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -7.47599, 1.06832, -8.34223)
+texture = ExtResource("10_pwfs5")
+
+[node name="Sprite3D13" type="Sprite3D" parent="Environment"]
+transform = Transform3D(0.749603, 0, 0.661887, 0, 0.999999, 0, -0.661887, 0, 0.749602, -8.58576, 1.06832, -7.90201)
+texture = ExtResource("10_pwfs5")
+
+[node name="Sprite3D14" type="Sprite3D" parent="Environment"]
+transform = Transform3D(0.366988, 0, 0.930224, 0, 0.999998, 0, -0.930225, 0, 0.366988, -9.22741, 1.06832, -6.86729)
+texture = ExtResource("10_pwfs5")
+
+[node name="Sprite3D11" type="Sprite3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -5.17515, 1.06832, -8.34222)
+texture = ExtResource("10_pwfs5")
+
+[node name="Sprite3D12" type="Sprite3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -6.2053, 1.06832, -8.34223)
+texture = ExtResource("10_pwfs5")
 
 [node name="CameraStuff" type="Node3D" parent="."]
 
@@ -183,4 +255,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15482, 0.140806, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.58665, 0.142728, 0)
 
 [node name="2duiStuff" parent="." instance=ExtResource("13_wp4q7")]
-tallySpeed = 5000.0

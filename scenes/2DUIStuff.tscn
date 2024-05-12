@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8l6swj1rh2m2"]
+[gd_scene load_steps=5 format=3 uid="uid://c8l6swj1rh2m2"]
 
 [ext_resource type="Script" path="res://scenes/screenText.gd" id="1_8chmw"]
 [ext_resource type="FontFile" uid="uid://bndsg4dbgkmx6" path="res://fonts/Digital Dystopia.otf" id="1_ko63s"]
+[ext_resource type="Texture2D" uid="uid://c5ry5gepdpatx" path="res://Sprites/uibg.png" id="3_doklv"]
 
 [sub_resource type="Theme" id="Theme_aq38k"]
 default_font = ExtResource("1_ko63s")
@@ -21,6 +22,7 @@ offset_top = 9.0
 offset_right = 308.0
 offset_bottom = 79.0
 theme = SubResource("Theme_aq38k")
+theme_override_colors/default_color = Color(0.803922, 0.929412, 0, 1)
 text = "SCORE: 000000"
 tab_size = 6
 
@@ -30,6 +32,7 @@ offset_top = 13.0
 offset_right = 1141.0
 offset_bottom = 83.0
 theme = SubResource("Theme_aq38k")
+theme_override_colors/default_color = Color(0.803922, 0.929412, 0, 1)
 text = "HIGHSCORE: 000000"
 tab_size = 6
 
@@ -39,6 +42,7 @@ offset_top = 579.0
 offset_right = 388.0
 offset_bottom = 649.0
 theme = SubResource("Theme_aq38k")
+theme_override_colors/default_color = Color(0.803922, 0.929412, 0, 1)
 text = "Mission: 000000"
 tab_size = 6
 
@@ -48,5 +52,12 @@ offset_top = 579.0
 offset_right = 1323.0
 offset_bottom = 649.0
 theme = SubResource("Theme_aq38k")
+theme_override_colors/default_color = Color(0.803922, 0.929412, 0, 1)
 text = "BALLS: 0"
 tab_size = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(575.5, 324)
+scale = Vector2(7.20625, 7.2)
+texture = ExtResource("3_doklv")

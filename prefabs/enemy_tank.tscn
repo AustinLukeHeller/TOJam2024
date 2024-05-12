@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dmqj50k7hhpqm"]
+[gd_scene load_steps=8 format=3 uid="uid://dmqj50k7hhpqm"]
 
 [ext_resource type="Script" path="res://scripts/EnemyTank.gd" id="1_vmm7f"]
 [ext_resource type="PackedScene" uid="uid://qts5qyc3d31t" path="res://Models/Tank_body.glb" id="2_3e4ma"]
+[ext_resource type="PackedScene" uid="uid://dlapqy0hr7eff" path="res://prefabs/exploder.tscn" id="2_knjck"]
 [ext_resource type="PackedScene" uid="uid://27audyiu4hob" path="res://Models/Spike_Wheel Holder.glb" id="3_8c2oa"]
 [ext_resource type="PackedScene" uid="uid://dygleh6owjb17" path="res://Models/spike_wheel_centered.glb" id="4_1wuxf"]
 [ext_resource type="Script" path="res://scripts/spinning.gd" id="5_wjsfb"]
@@ -14,6 +15,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.571, 0.00913081, -3.353)
 script = ExtResource("1_vmm7f")
 moveSpeed = 0.5
 pointsOnKill = 1000.0
+explosion = ExtResource("2_knjck")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.022557, 0, 0, 0, 0.022557, 0, 0, 0, 0.022557, 0, 0, -0.0441015)

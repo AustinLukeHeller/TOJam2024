@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlapqy0hr7eff"]
+
+[ext_resource type="Texture2D" uid="uid://cy6oo55s6cwk8" path="res://Sprites/explode.png" id="1_ubwis"]
+[ext_resource type="Script" path="res://scripts/Exploder.gd" id="2_70iw5"]
+
+[node name="Exploder" type="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.481382, 0.258048, -0.51932)
+billboard = 1
+render_priority = 10
+texture = ExtResource("1_ubwis")
+script = ExtResource("2_70iw5")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_explode"]

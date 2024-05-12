@@ -20,7 +20,7 @@ func _process(delta):
 		elif(Input.is_action_pressed("Right")):
 			velocity2-=turnAccel*delta
 		else:
-			velocity2 = move_toward(velocity2,0,turnAccel)
+			velocity2 = move_toward(velocity2,0,turnAccel*delta)
 		velocity2 = clamp(velocity2,-turnMaxSpeed,turnMaxSpeed)
 		
 		rotation_degrees.y=clamp(rotation_degrees.y+velocity2*delta,-maxAngle,maxAngle)

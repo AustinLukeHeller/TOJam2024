@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://xpajt6sy2fms"]
+
+[ext_resource type="Script" path="res://BallManager.gd" id="1_gqg1s"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ewpq3"]
+
+[node name="BallManager" type="Node3D"]
+script = ExtResource("1_gqg1s")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="deathBox" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_ewpq3")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

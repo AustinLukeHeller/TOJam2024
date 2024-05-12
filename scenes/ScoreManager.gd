@@ -3,7 +3,7 @@ extends Node3D
 @export var triggers: Array[ScoreReliant] = []
 @export var scoreThresholds: Array[float] = []
 var currentThreshold = -1;
-
+signal goal_changed
 func _ready():
 	for i in triggers.size():
 		triggers[i].passedScoreThreshold = false
@@ -17,6 +17,9 @@ func _process(delta):
 			
 func passedThreshold():
 	currentThreshold+=1
+	emit_signal("goal_changed")
 	if(triggers.size()>currentThreshold):
 		triggers[currentThreshold].passedScoreThreshold=true
-		
+func getCurrentGoal() ->float:
+	return scoreThresholds[currentThreshold]
+

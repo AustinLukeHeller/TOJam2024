@@ -11,7 +11,7 @@ extends Node
 @export var cur_is_high_score := false
 
 signal high_score
-
+signal score_change
 # Max number of high scores to store
 const MAX_HIGH_SCORES := 10
 
@@ -31,8 +31,10 @@ func event(e_name: String):
 
 func add(val: int):
 	_score += val
+	emit_signal("score_change")
 	print("new score:", Score.get_score())
-	if _score > _high_score and !cur_is_high_score:
+	if _score > _high_score:
+		_high_score = _score
 		emit_signal("high_score")
 		cur_is_high_score = true
 

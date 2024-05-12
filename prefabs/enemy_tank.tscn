@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=3 uid="uid://dmqj50k7hhpqm"]
+
+[ext_resource type="Script" path="res://scripts/EnemyTank.gd" id="1_vmm7f"]
+[ext_resource type="PackedScene" uid="uid://qts5qyc3d31t" path="res://Models/Tank_body.glb" id="2_3e4ma"]
+[ext_resource type="PackedScene" uid="uid://27audyiu4hob" path="res://Models/Spike_Wheel Holder.glb" id="3_8c2oa"]
+[ext_resource type="PackedScene" uid="uid://dygleh6owjb17" path="res://Models/spike_wheel_centered.glb" id="4_1wuxf"]
+[ext_resource type="Script" path="res://scripts/spinning.gd" id="5_wjsfb"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vym08"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nffvf"]
+size = Vector3(1, 1, 1.6207)
+
+[node name="EnemyTank" type="AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.571, 0.00913081, -3.353)
+physics_material_override = SubResource("PhysicsMaterial_vym08")
+sync_to_physics = false
+script = ExtResource("1_vmm7f")
+moveSpeed = 0.5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.15019, 0, 0, 0, 0.15019, 0, 0, 0, 0.15019, 0, 0, -0.0383427)
+shape = SubResource("BoxShape3D_nffvf")
+
+[node name="ff" parent="." instance=ExtResource("2_3e4ma")]
+transform = Transform3D(1.36753e-09, 0, -0.114679, 0, 0.114679, 0, 0.114679, 0, 1.36753e-09, 0.0587832, -0.0287313, -0.072109)
+
+[node name="default" parent="." instance=ExtResource("3_8c2oa")]
+transform = Transform3D(-7.98387e-09, 0, -0.3, 0, 0.3, 0, 0.18265, 0, -1.31134e-08, -0.0122899, 0.0479652, -0.0386097)
+
+[node name="default3" parent="." instance=ExtResource("4_1wuxf")]
+transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, -0.00244468, 0.0342167, -0.168612)
+script = ExtResource("5_wjsfb")
+spinSpeed = -15.0

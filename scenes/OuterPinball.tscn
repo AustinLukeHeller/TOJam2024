@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cd1g0fc670suc"]
+[gd_scene load_steps=18 format=3 uid="uid://cd1g0fc670suc"]
 
 [ext_resource type="Script" path="res://scripts/CameraControls.gd" id="1_2eqfg"]
 [ext_resource type="Script" path="res://scenes/FollowAtOffset.gd" id="1_12ctm"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cr0cwcfylcf05" path="res://textures/pinball_screen_texture.tres" id="1_x1yod"]
 [ext_resource type="PackedScene" uid="uid://qc8mond1ye32" path="res://scenes/InnerPinball.tscn" id="2_bqf6q"]
 [ext_resource type="Texture2D" uid="uid://cnu4nkv7etvhw" path="res://textures/warGround.png" id="4_5pmuc"]
+[ext_resource type="PackedScene" uid="uid://dmqj50k7hhpqm" path="res://prefabs/enemy_tank.tscn" id="7_462bu"]
+[ext_resource type="Script" path="res://scenes/EnemySpawner.gd" id="7_wwpjv"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_3vop3"]
 
@@ -42,7 +44,7 @@ texture_filter = 2
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.0781754, -0.984341, 0.157993, 0.352543, 0.175534, 0.919185, -0.932525, -0.0161583, 0.360745, 4.35084, 0, -0.512858)
 
-[node name="Tank" type="Node3D" parent="."]
+[node name="Tank" type="AnimatableBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00724739, 0.103596, -0.151719)
 script = ExtResource("1_evj53")
 maxAngle = 65.0
@@ -100,3 +102,37 @@ transform = Transform3D(1, 0, 0, 0, 0.881666, 0.471874, 0, -0.471874, 0.881666, 
 script = ExtResource("1_2eqfg")
 startCamNode = NodePath("../../Start View")
 tankCamNode = NodePath("../../Tank View")
+
+[node name="EnemySpawns" type="Node3D" parent="." node_paths=PackedStringArray("spawnsParent")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.571199, 0.069405, -3.35314)
+script = ExtResource("7_wwpjv")
+enemyPrefab = ExtResource("7_462bu")
+spawnsParent = NodePath(".")
+spawnRate = 5.0
+
+[node name="EnemySpawns2" type="Node3D" parent="EnemySpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00614841, 0)
+
+[node name="EnemySpawns3" type="Node3D" parent="EnemySpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.17113, 0.00720936, 0)
+
+[node name="EnemySpawns4" type="Node3D" parent="EnemySpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.54117, 0.00844005, 0)
+
+[node name="EnemySpawns5" type="Node3D" parent="EnemySpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.51424, 0.00437497, 0)
+
+[node name="EnemySpawns6" type="Node3D" parent="EnemySpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.39532, 0.00850539, 0)
+
+[node name="EnemySpawns7" type="Node3D" parent="EnemySpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15482, 0.00776145, 0)
+
+[node name="EnemySpawns8" type="Node3D" parent="EnemySpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.58665, 0.00968364, 0)
+
+[node name="EnemySpawns9" type="Node3D" parent="EnemySpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.55763, 0.010021, 0)
+
+[node name="EnemySpawns10" type="Node3D" parent="EnemySpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.61134, 0.00743756, 0)

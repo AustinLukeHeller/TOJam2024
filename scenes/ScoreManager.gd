@@ -1,10 +1,14 @@
 extends Node3D
+class_name ScoreManager
 
 @export var triggers: Array[ScoreReliant] = []
 @export var scoreThresholds: Array[float] = []
 var currentThreshold = -1;
 signal goal_changed
 func _ready():
+	reset()
+
+func reset():
 	for i in triggers.size():
 		triggers[i].passedScoreThreshold = false
 	

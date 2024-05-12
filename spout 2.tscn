@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://yoeltv4eef8i"]
+
+[ext_resource type="PackedScene" uid="uid://bhneftbgs0g4x" path="res://Models/Tube_test.glb" id="1_ixtj7"]
+[ext_resource type="Texture2D" uid="uid://bqjvyacdnfhl0" path="res://Sprites/Textures_tank.png" id="2_dscgc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w08ri"]
+transparency = 4
+depth_draw_mode = 1
+albedo_texture = ExtResource("2_dscgc")
+texture_filter = 0
+texture_repeat = false
+
+[node name="default2" instance=ExtResource("1_ixtj7")]
+
+[node name="default" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_w08ri")

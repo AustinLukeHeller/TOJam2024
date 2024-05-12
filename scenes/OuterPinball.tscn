@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://qc8mond1ye32" path="res://scenes/InnerPinball.tscn" id="2_bqf6q"]
 [ext_resource type="PackedScene" uid="uid://qts5qyc3d31t" path="res://Models/Tank_body.glb" id="3_jo2kc"]
 [ext_resource type="Texture2D" uid="uid://cnu4nkv7etvhw" path="res://textures/warGround.png" id="4_5pmuc"]
-[ext_resource type="PackedScene" uid="uid://bhneftbgs0g4x" path="res://Models/Tube_test.glb" id="4_ilrro"]
 [ext_resource type="PackedScene" uid="uid://dxae7bp5pgx3d" path="res://Models/Tube_Tip.glb" id="5_cu2mp"]
+[ext_resource type="PackedScene" uid="uid://yoeltv4eef8i" path="res://spout 2.tscn" id="5_xkati"]
 [ext_resource type="PackedScene" uid="uid://dmqj50k7hhpqm" path="res://prefabs/enemy_tank.tscn" id="7_462bu"]
 [ext_resource type="Script" path="res://scenes/EnemySpawner.gd" id="7_wwpjv"]
 [ext_resource type="Texture2D" uid="uid://di4eielkomy51" path="res://textures/warGround2.png" id="9_hu5b3"]
@@ -26,7 +26,7 @@ shading_mode = 0
 albedo_texture = ExtResource("1_x1yod")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k1xe7"]
-size = Vector3(0.257874, 0.404846, 0.342163)
+size = Vector3(0.165421, 0.404846, 0.243347)
 
 [sub_resource type="World3D" id="World3D_5wiho"]
 
@@ -89,17 +89,17 @@ material = SubResource("StandardMaterial3D_jpba1")
 [node name="body" parent="Tank" instance=ExtResource("3_jo2kc")]
 transform = Transform3D(-1.52668e-08, -1.5634e-09, -0.205979, -0.0209836, 0.204908, 0, 0.204908, 0.0209836, -1.53467e-08, 0.0936567, -0.168861, -0.166891)
 
-[node name="tube" parent="Tank" instance=ExtResource("4_ilrro")]
+[node name="default3" parent="Tank" instance=ExtResource("5_xkati")]
 transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0.0203006, -0.0176734, -0.170846)
 
-[node name="default2" parent="Tank/tube" instance=ExtResource("5_cu2mp")]
+[node name="default2" parent="Tank/default3" instance=ExtResource("5_cu2mp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.06196, 0.225974, -0.574507)
 
-[node name="launch point" type="Node3D" parent="Tank/tube/default2"]
+[node name="launch point" type="Node3D" parent="Tank/default3/default2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.305577)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tank"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000310684, -0.14679, 0.0288696)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000119889, -0.14679, -0.0205384)
 shape = SubResource("BoxShape3D_k1xe7")
 
 [node name="SubViewport" type="SubViewport" parent="."]
@@ -270,6 +270,18 @@ texture = ExtResource("11_d7a0x")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0430911, 0, 0.00170946)
 shape = SubResource("BoxShape3D_7tt0t")
 
+[node name="Tree12" type="Sprite3D" parent="Environment"]
+transform = Transform3D(0.842266, 0, 0, 0, 1.15118, 0, 0, 0, 0.999999, 1.49586, 0.192229, -1.04828)
+shaded = true
+texture_filter = 0
+texture = ExtResource("11_d7a0x")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Tree12"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Tree12/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0430911, 0, 0.00170946)
+shape = SubResource("BoxShape3D_7tt0t")
+
 [node name="Tree10" type="Sprite3D" parent="Environment"]
 transform = Transform3D(0.842266, 0, 0, 0, 1.15118, 0, 0, 0, 0.999999, 2.92786, 0.325474, -2.28237)
 shaded = true
@@ -366,6 +378,30 @@ texture = ExtResource("12_iiuha")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0157166, -0.0365295, 0.00677514)
 shape = SubResource("BoxShape3D_uj80q")
 
+[node name="SandBags9" type="Sprite3D" parent="Environment"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -1.4305, 0.131173, -0.834334)
+shaded = true
+texture_filter = 0
+texture = ExtResource("12_iiuha")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/SandBags9"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/SandBags9/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0157166, -0.0365295, 0.00677514)
+shape = SubResource("BoxShape3D_uj80q")
+
+[node name="SandBags10" type="Sprite3D" parent="Environment"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 1.71452, 0.131173, -0.364649)
+shaded = true
+texture_filter = 0
+texture = ExtResource("12_iiuha")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/SandBags10"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/SandBags10/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0157166, -0.0365295, 0.00677514)
+shape = SubResource("BoxShape3D_uj80q")
+
 [node name="SandBags2" type="Sprite3D" parent="Environment"]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.154999, 0.131173, -3.32148)
 shaded = true
@@ -453,10 +489,10 @@ shape = SubResource("BoxShape3D_uj80q")
 [node name="CameraStuff" type="Node3D" parent="."]
 
 [node name="Start View" type="Node3D" parent="CameraStuff"]
-transform = Transform3D(1, 0, 0, 0, 0.881303, 0.472551, 0, -0.472551, 0.881303, 0, 0.121159, -0.130033)
+transform = Transform3D(0.999998, 0.0012702, -0.00119698, 0, 0.685818, 0.727773, 0.00174533, -0.727771, 0.685817, 0.0033823, 0.16704, -0.130847)
 
 [node name="Tank View" type="Node3D" parent="CameraStuff"]
-transform = Transform3D(1, 0, 0, 0, 0.881303, 0.472551, 0, -0.472551, 0.881303, 0, 0.265, 0.049)
+transform = Transform3D(1, 0, 0, 0, 0.880609, 0.473843, 0, -0.473843, 0.880609, 0, 0.252935, 0.0892667)
 
 [node name="OffsetManager" type="Node3D" parent="CameraStuff" node_paths=PackedStringArray("targetNode")]
 script = ExtResource("1_12ctm")
@@ -467,6 +503,7 @@ transform = Transform3D(1, 0, 0, 0, 0.856915, 0.515457, 0, -0.515457, 0.856915, 
 script = ExtResource("1_2eqfg")
 startCamNode = NodePath("../../Start View")
 tankCamNode = NodePath("../../Tank View")
+rotSpeed = 25.0
 
 [node name="EnemySpawns" type="Node3D" parent="." node_paths=PackedStringArray("spawnsParent")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.571199, 0.069405, -3.35314)

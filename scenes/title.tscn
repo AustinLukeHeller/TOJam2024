@@ -1,0 +1,104 @@
+[gd_scene load_steps=8 format=3 uid="uid://c4vk6ssitdxak"]
+
+[ext_resource type="Script" path="res://scenes/title.gd" id="1_73wmg"]
+[ext_resource type="Texture2D" uid="uid://cnu4nkv7etvhw" path="res://textures/warGround.png" id="2_kovxg"]
+[ext_resource type="FontFile" uid="uid://bndsg4dbgkmx6" path="res://fonts/Digital Dystopia.otf" id="2_pimbr"]
+[ext_resource type="Texture2D" uid="uid://cjgld4ingdqns" path="res://Sprites/bg.png" id="3_17bv7"]
+[ext_resource type="Texture2D" uid="uid://c64ruh40due03" path="res://Sprites/tree.png" id="4_yy1ws"]
+
+[sub_resource type="Theme" id="Theme_aq38k"]
+default_font = ExtResource("2_pimbr")
+default_font_size = 70
+
+[sub_resource type="Theme" id="Theme_nbt00"]
+default_font = ExtResource("2_pimbr")
+default_font_size = 27
+
+[node name="2duiStuff" type="Node2D"]
+script = ExtResource("1_73wmg")
+
+[node name="SCORE" type="RichTextLabel" parent="."]
+offset_left = 45.0
+offset_top = 66.0
+offset_right = 1069.0
+offset_bottom = 621.0
+theme = SubResource("Theme_aq38k")
+theme_override_colors/default_color = Color(0.784225, 0, 0.125452, 1)
+bbcode_enabled = true
+text = "[center]
+MAKE PIN 
+NOT BALL
+
+
+
+INSERT COIN
+[/center]"
+tab_size = 6
+
+[node name="SCORE2" type="RichTextLabel" parent="."]
+offset_left = 48.0
+offset_top = 66.0
+offset_right = 1072.0
+offset_bottom = 621.0
+theme = SubResource("Theme_aq38k")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "[center]
+MAKE PIN 
+NOT BALL
+
+
+
+INSERT COIN
+[/center]"
+tab_size = 6
+
+[node name="LORE" type="RichTextLabel" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 1153.0
+offset_bottom = 513.0
+theme = SubResource("Theme_nbt00")
+theme_override_colors/default_color = Color(0, 0, 0, 0.443137)
+bbcode_enabled = true
+text = "Theres a war going on. But you don't care about any of that. All you care about is Ball. Pin, That is. All you care about is flipping
+them paddles and seeing the points rack up. The world could be overrun with killbots for all you care, as long as you get your fix.
+For a rad, cool badass dude like you, the draft is not cool man! So you dodged of course, shacked up in some nowhere midlle american town. You paddle out your days at the boardwalk arcade, but its not long before you're topping all the scoreboards on all the machines in town. But just as you were getting sick of these old machines, thinking of skipping town again, you get a knock on the door. That's not the pizza delivery man, man! It's the feds! Or at least, it's someone dressed like the feds. But they dont ship you off to war. instead, they give you an offer you can't refuse. \"We heard you were good,\" they say. \"There's a top secret project we've been working on, and we think you might be the perfect test subject.\" You get a sinking feeling. \"No thanks Joe, I'm not into science projects,\" you scoff.  He looks at you, with eyes sharp as a killbot's saw. \"This ain't no science project kid. This is pinball. Take it or leave it.\" He walks back to his black, unmarked van. You pause for a moment, then shrug, and follow. Seems sketchy, but if there's one thing you can't turn down it's a game of good old fashioned pinball baby! YEaaaaaaaaaaaaaaaaaaaaaaaah!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+scroll_active = false
+tab_size = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(265.075, 477)
+scale = Vector2(4.1082, 2.66722)
+texture = ExtResource("2_kovxg")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(839.437, 474)
+scale = Vector2(-4.86621, 2.667)
+texture = ExtResource("2_kovxg")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(355.376, 170)
+scale = Vector2(-5.60646, 2.667)
+texture = ExtResource("3_17bv7")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(1070, 164)
+scale = Vector2(-5.60646, 2.667)
+texture = ExtResource("3_17bv7")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(990, 267)
+scale = Vector2(-5.60646, 2.667)
+texture = ExtResource("4_yy1ws")
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(140, 266)
+scale = Vector2(-5.60646, 2.667)
+texture = ExtResource("4_yy1ws")

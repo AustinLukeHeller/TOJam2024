@@ -14,7 +14,9 @@ func _ready():
 func spawnBall():
 	print("spawning ball")
 	var ball= load(ballPrefab.resource_path).instantiate()
+	
 	spawnLocation.add_child(ball)
+	ball.global_position=spawnLocation.global_position
 	print(spawnLocation.get_children())
 	
 func reset():

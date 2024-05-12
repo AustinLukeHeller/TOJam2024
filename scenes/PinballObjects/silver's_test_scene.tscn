@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cmj2kthm32h2b"]
+[gd_scene load_steps=29 format=3 uid="uid://cmj2kthm32h2b"]
 
 [ext_resource type="PackedScene" uid="uid://bv6avaer22yl3" path="res://scenes/PinballObjects/flipper_l.tscn" id="1_guju8"]
 [ext_resource type="PackedScene" uid="uid://c7wpc6x1n1ffu" path="res://scenes/PinballObjects/flipper_r.tscn" id="2_hi4ii"]
@@ -7,9 +7,9 @@
 [ext_resource type="Script" path="res://scenes/ScoreManager.gd" id="5_rvokj"]
 [ext_resource type="PackedScene" uid="uid://bj20cl1e123ci" path="res://scenes/PinballObjects/ball.tscn" id="6_1wsf4"]
 [ext_resource type="PackedScene" uid="uid://cyfwe84l5a4im" path="res://targets/bumper_large.tscn" id="7_4ssm5"]
-[ext_resource type="PackedScene" uid="uid://scibfnmd45mc" path="res://prefabs/curve_wall.tscn" id="7_dgall"]
-[ext_resource type="PackedScene" uid="uid://boc45nefsvxcg" path="res://prefabs/wall.tscn" id="7_ru0iv"]
-[ext_resource type="PackedScene" uid="uid://cyhu0ox6ctirc" path="res://prefabs/long_ramp.tscn" id="8_1xi7r"]
+[ext_resource type="PackedScene" path="res://prefabs/curve_wall.tscn" id="7_dgall"]
+[ext_resource type="PackedScene" path="res://prefabs/wall.tscn" id="7_ru0iv"]
+[ext_resource type="PackedScene" path="res://prefabs/long_ramp.tscn" id="8_1xi7r"]
 [ext_resource type="PackedScene" uid="uid://b38ottfharoes" path="res://targets/bumper_small.tscn" id="8_tm13e"]
 [ext_resource type="PackedScene" uid="uid://cco2blfkabhq7" path="res://targets/slingshot_l.tscn" id="9_rtf1l"]
 [ext_resource type="PackedScene" uid="uid://bakyqmpmq5mmy" path="res://targets/slingshot_r.tscn" id="10_x1ybv"]
@@ -17,17 +17,35 @@
 [ext_resource type="PackedScene" uid="uid://vnjbuega05s1" path="res://targets/target.tscn" id="13_mcnjp"]
 [ext_resource type="PackedScene" uid="uid://b0xkxaslxjol7" path="res://targets/target_bank.tscn" id="14_mdd4t"]
 [ext_resource type="PackedScene" uid="uid://kri7qhxrl62h" path="res://targets/wall_sling_1.tscn" id="15_vy1hk"]
-[ext_resource type="PackedScene" uid="uid://cacsvhfu3ijbr" path="res://ball_trigger.tscn" id="16_dh66i"]
+[ext_resource type="PackedScene" path="res://ball_trigger.tscn" id="16_dh66i"]
 [ext_resource type="PackedScene" uid="uid://tb6beixppwb8" path="res://targets/rollover.tscn" id="16_eqi58"]
-[ext_resource type="PackedScene" uid="uid://xpajt6sy2fms" path="res://ball_manager.tscn" id="17_ijqd7"]
-[ext_resource type="PackedScene" uid="uid://ctv7m8sgiqo60" path="res://Models/Funnel.glb" id="19_5vlh8"]
+[ext_resource type="PackedScene" uid="uid://b1vvlhxmwng5k" path="res://ball_manager.tscn" id="17_ijqd7"]
+[ext_resource type="Texture2D" uid="uid://cjgld4ingdqns" path="res://Sprites/bg.png" id="19_2drun"]
+[ext_resource type="PackedScene" uid="uid://cv35ieuau2th3" path="res://Models/Funnel.glb" id="19_5vlh8"]
+[ext_resource type="Texture2D" uid="uid://dltc1gr8mdhph" path="res://Sprites/pinball speedboost off.png" id="20_bix5q"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gldma"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d72a5"]
+albedo_color = Color(1, 0.509804, 1, 1)
+albedo_texture = ExtResource("19_2drun")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_wpxcd"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b2nwi"]
+disable_fog = true
+albedo_color = Color(0, 0.458824, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gcy15"]
+albedo_color = Color(1, 0.509804, 1, 1)
+albedo_texture = ExtResource("20_bix5q")
+uv1_scale = Vector3(5.505, 0.385, 1)
+uv1_offset = Vector3(0, 0.27, 0)
+uv1_triplanar_sharpness = 1.27456
+texture_filter = 0
+
 [node name="Silver\'s Test scene" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 0.939693, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866026, 0, -0.866025, 0.5, 0.794028, 14, 7)
@@ -82,7 +100,7 @@ flipper_min_rotation = -5.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, -0.1, 0)
 
 [node name="Funnel" parent="TableWallsHolder/FunnelStuff" instance=ExtResource("19_5vlh8")]
-transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 6.696, 0.278028, -12.634)
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 6.696, -0.565491, -12.634)
 
 [node name="StartingPath" type="Node3D" parent="TableWallsHolder"]
 
@@ -182,6 +200,18 @@ transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -3.44579, 0, -8
 [node name="wall38" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -3.69808, 0, -8.29297)
 
+[node name="wall40" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -3.96133, 1.19209e-07, -3.86601)
+
+[node name="wall41" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 0.999999, -2.98023e-08, 0, 2.98023e-08, 0.999999, -3.96133, 1.19209e-07, -4.86591)
+
+[node name="wall42" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, -3.96133, 1.19209e-07, -5.81722)
+
+[node name="wall43" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
+transform = Transform3D(0.995099, 0, -0.0988855, -7.45058e-09, 1, -1.49012e-07, 0.0988856, 1.78814e-07, 0.995099, -3.96133, 4.76837e-07, -7.75552)
+
 [node name="wall39" parent="TableWallsHolder/StartingPath" instance=ExtResource("7_ru0iv")]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -3.87481, 0, -8.29297)
 
@@ -280,16 +310,16 @@ transform = Transform3D(-4.37114e-08, 0, 1, 8.9407e-08, 1, 8.88178e-16, -1, 7.45
 transform = Transform3D(-4.37114e-08, 0, 1, 8.9407e-08, 1, 8.88178e-16, -1, 8.9407e-08, -4.37114e-08, -1, 0, -13.9)
 
 [node name="wall11" parent="TableWallsHolder/TableWalls/top" instance=ExtResource("7_ru0iv")]
-transform = Transform3D(-4.37114e-08, 0, 1, 1.04308e-07, 1, 8.88178e-16, -1, 1.19209e-07, -4.37114e-08, -2, 0, -13.9)
+transform = Transform3D(-4.37114e-08, 0, 1, 2.08616e-07, 2.37703, 0, -1, 2.98023e-07, -4.37114e-08, -2, -0.702936, -13.9)
 
 [node name="wall12" parent="TableWallsHolder/TableWalls/top" instance=ExtResource("7_ru0iv")]
-transform = Transform3D(-4.37114e-08, 0, 1, 1.04308e-07, 1, 8.88178e-16, -1, 1.49012e-07, -4.37114e-08, -3, 0, -13.9)
+transform = Transform3D(-4.37114e-08, 0, 1, 2.08616e-07, 2.37703, 0, -1, 5.96046e-07, -4.37114e-08, -3, -0.702937, -13.9)
 
 [node name="wall13" parent="TableWallsHolder/TableWalls/top" instance=ExtResource("7_ru0iv")]
-transform = Transform3D(-4.37114e-08, 0, 1, 1.3411e-07, 1, 8.88178e-16, -1, 1.78814e-07, -4.37114e-08, -4, 0, -13.9)
+transform = Transform3D(-4.37114e-08, 0, 1, 2.08616e-07, 2.37703, 0, -1, 7.15256e-07, -4.37114e-08, -4, -0.702936, -13.9)
 
 [node name="wall14" parent="TableWallsHolder/TableWalls/top" instance=ExtResource("7_ru0iv")]
-transform = Transform3D(-4.37114e-08, 0, 1, 1.63913e-07, 1, 8.88178e-16, -1, 2.08616e-07, -4.37114e-08, -5, 0, -13.9)
+transform = Transform3D(-4.37114e-08, 0, 1, 2.68221e-07, 2.37703, 0, -1, 7.15256e-07, -4.37114e-08, -5, -0.702937, -13.9)
 
 [node name="SideWall" type="Node3D" parent="TableWallsHolder/TableWalls"]
 transform = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0)
@@ -453,7 +483,7 @@ transform = Transform3D(1, -5.96047e-08, 0, 5.96047e-08, 1, 1.49012e-08, 0, 0, 1
 transform = Transform3D(1, -5.96047e-08, 0, 5.96047e-08, 1, 0, 8.88178e-16, 2.98023e-08, 1, 0, 0, 4)
 
 [node name="longRamp" parent="." instance=ExtResource("8_1xi7r")]
-transform = Transform3D(-2.84124e-08, 0, -2, 0, 0.7, 0, 0.65, 0, -8.74228e-08, -5.49817, 0, -3.8885)
+transform = Transform3D(-2.81671e-08, 4.01237e-09, -2, 0.0852357, 0.693956, 1.77636e-15, 0.644387, -0.0917923, -8.74228e-08, -5.49817, 1.19209e-07, -3.8885)
 
 [node name="Score-ables" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4694, 0.0567624, -0.318913)
@@ -474,6 +504,9 @@ transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 9.83118, 0, -9.
 
 [node name="Bumper-Large" parent="Score-ables/BottomBumperArea" instance=ExtResource("7_4ssm5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.16507, 0, 1.22952)
+
+[node name="Bumper-Large4" parent="Score-ables/BottomBumperArea" instance=ExtResource("7_4ssm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 2.98023e-08, 0, -2.98023e-08, 1, -4.16799, 5.06639e-07, 11.6058)
 
 [node name="Bumper-Large2" parent="Score-ables/BottomBumperArea" instance=ExtResource("7_4ssm5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.73545, 0, 3.42459)
@@ -515,8 +548,15 @@ force = 10.0
 transform = Transform3D(0.599999, 0, -2.98023e-08, 0, 0.6, 0, 0, 0, 0.6, -11.1061, 3.94881e-07, -9.84165)
 force = 10.0
 
+[node name="WallSling2" parent="Score-ables/WallSling1" instance=ExtResource("15_vy1hk")]
+transform = Transform3D(-2.38419e-07, 0, 0.6, 4.47035e-08, 0.6, -1.3411e-07, -0.599999, 0, 1.49012e-08, -6.9616, -0.16367, -4.68724)
+force = 10.0
+
+[node name="WallSling3" parent="Score-ables/WallSling1" instance=ExtResource("15_vy1hk")]
+transform = Transform3D(-2.38419e-07, 0, 0.6, 5.96046e-08, 0.6, -1.78814e-07, -0.599999, 0, 0, -6.45504, -0.16367, -5.56464)
+force = 10.0
+
 [node name="scoreManager" type="Node3D" parent="." node_paths=PackedStringArray("triggers")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("5_rvokj")
 triggers = [NodePath("../PlayerControlledObjects/FlipperLMiddle"), NodePath("../PlayerControlledObjects/movingwall"), NodePath("../PlayerControlledObjects/FlipperRUpper")]
 scoreThresholds = Array[float]([100.0, 200.0, 300.0, 400.0])
@@ -528,6 +568,7 @@ transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
 transform = Transform3D(5.57309, 0, 0, 0, 0.999999, 3.12639e-13, 0, -3.01981e-14, 8.77011, 1.35726, 8.16296e-08, -1.25696)
 mesh = SubResource("PlaneMesh_gldma")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_d72a5")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Background/MeshInstance3D"]
 
@@ -539,6 +580,7 @@ shape = SubResource("BoxShape3D_wpxcd")
 transform = Transform3D(4.73682, 0, 0, 0, 0.999998, 8.52651e-14, 0, -8.17124e-14, 2.40526, 2.34089, -2.18477e-07, -11.3268)
 mesh = SubResource("PlaneMesh_gldma")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_b2nwi")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Background/meshtop"]
 
@@ -547,9 +589,10 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.900164, 0)
 shape = SubResource("BoxShape3D_wpxcd")
 
 [node name="meshtop2" type="MeshInstance3D" parent="Background"]
-transform = Transform3D(0.971672, 0, 0, 0, 0.999997, 3.41061e-13, 0, -1.06581e-13, 5.67965, -4.77167, 1.73365e-07, 1.82119)
+transform = Transform3D(-2.47647e-07, 0, 0.681486, 5.96046e-07, 0.999997, -3.28626e-14, -5.6655, 0, -2.97887e-08, -4.91023, 5.36442e-07, 1.82119)
 mesh = SubResource("PlaneMesh_gldma")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_gcy15")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Background/meshtop2"]
 
@@ -558,7 +601,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.900164, 0)
 shape = SubResource("BoxShape3D_wpxcd")
 
 [node name="Ceil" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.999999, -2.98023e-08, 0, 2.98023e-08, 0.999999, 0, 1.21884, 0)
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-07, 0, 2.98023e-07, 1, -0.00154161, 2.55858, -0.0192335)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ceil"]
 transform = Transform3D(5.57309, 0, 0, 0, 0.999999, 3.12639e-13, 0, -3.01981e-14, 8.77011, 1.35726, 8.16296e-08, -1.25696)
@@ -573,7 +616,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.900164, 0)
 shape = SubResource("BoxShape3D_wpxcd")
 
 [node name="meshtop" type="MeshInstance3D" parent="Ceil"]
-transform = Transform3D(4.73682, 0, 0, 0, 0.999998, 8.52651e-14, 0, -8.17124e-14, 2.40526, 2.34089, -2.18477e-07, -11.3268)
+transform = Transform3D(4.73682, 0, 0, 0, 0.999998, 8.52651e-14, 0, -8.17124e-14, 2.40526, 2.34089, -2.38419e-07, -11.3268)
 visible = false
 mesh = SubResource("PlaneMesh_gldma")
 skeleton = NodePath("")
@@ -606,10 +649,10 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.02445, 0.293953, -12
 ballHolder = NodePath("../Marker3D")
 
 [node name="Marker3D" type="Marker3D" parent="ballManagerstuff"]
-transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 6.68932, 0.375266, 5.0924)
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 6.68932, 0.256135, 4.89977)
 
 [node name="BallManager" parent="ballManagerstuff" node_paths=PackedStringArray("spawnLocation", "scoreManager") instance=ExtResource("17_ijqd7")]
-transform = Transform3D(50, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, -0.0248961, -0.361495, 7.75978)
+transform = Transform3D(50, 0, 0, 0, 0.939694, 22.7414, 0, -0.34202, 62.4814, -0.0248961, -3.18726, 7.75979)
 ballPrefab = ExtResource("6_1wsf4")
 spawnLocation = NodePath("../Marker3D")
 scoreManager = NodePath("../../scoreManager")

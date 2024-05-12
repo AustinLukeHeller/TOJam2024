@@ -5,7 +5,6 @@
 [ext_resource type="Script" path="res://scripts/Tank.gd" id="1_evj53"]
 [ext_resource type="Texture2D" uid="uid://cr0cwcfylcf05" path="res://textures/pinball_screen_texture.tres" id="1_x1yod"]
 [ext_resource type="PackedScene" uid="uid://bvm1tno881k8w" path="res://scenes/PinballObjects/outerball.tscn" id="2_abllf"]
-[ext_resource type="PackedScene" uid="uid://qc8mond1ye32" path="res://scenes/InnerPinball.tscn" id="2_bqf6q"]
 [ext_resource type="PackedScene" uid="uid://qts5qyc3d31t" path="res://Models/Tank_body.glb" id="3_jo2kc"]
 [ext_resource type="Texture2D" uid="uid://cnu4nkv7etvhw" path="res://textures/warGround.png" id="4_5pmuc"]
 [ext_resource type="PackedScene" uid="uid://dxae7bp5pgx3d" path="res://Models/Tube_Tip.glb" id="5_cu2mp"]
@@ -15,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://ycvnj7evtt1w" path="res://scenes/PinballObjects/plunger.tscn" id="7_q1ltl"]
 [ext_resource type="Script" path="res://scenes/EnemySpawner.gd" id="7_wwpjv"]
 [ext_resource type="Texture2D" uid="uid://di4eielkomy51" path="res://textures/warGround2.png" id="9_hu5b3"]
+[ext_resource type="PackedScene" uid="uid://cmj2kthm32h2b" path="res://scenes/PinballObjects/silver's_test_scene.tscn" id="9_yuu8n"]
 [ext_resource type="Texture2D" uid="uid://cjgld4ingdqns" path="res://Sprites/bg.png" id="10_pwfs5"]
 [ext_resource type="Texture2D" uid="uid://c64ruh40due03" path="res://Sprites/tree.png" id="11_d7a0x"]
 [ext_resource type="Texture2D" uid="uid://cd1wqvc4lfwk" path="res://Sprites/sandbags.png" id="12_iiuha"]
@@ -89,7 +89,7 @@ bulletPrefab = ExtResource("2_abllf")
 bulletSpeed = 30.0
 
 [node name="Screen Plane" type="CSGMesh3D" parent="Tank"]
-transform = Transform3D(0.0922482, 0, 0, 0, 0.0813913, -0.0795569, 0, 0.0795569, 0.0813913, -0.00923048, -0.0479905, -0.0563318)
+transform = Transform3D(0.0922482, 0, 0, 0, 0.0813913, -0.0696689, 0, 0.0795569, 0.0712753, -0.00923048, -0.0463788, -0.0579806)
 mesh = SubResource("PlaneMesh_3vop3")
 material = SubResource("StandardMaterial3D_jpba1")
 
@@ -126,8 +126,7 @@ shape = SubResource("BoxShape3D_k1xe7")
 own_world_3d = true
 world_3d = SubResource("World3D_5wiho")
 
-[node name="InnerPinball" parent="SubViewport" instance=ExtResource("2_bqf6q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.81355, 0.128625, 0)
+[node name="Silver\'s Test scene" parent="SubViewport" instance=ExtResource("9_yuu8n")]
 
 [node name="Environment" type="Node3D" parent="."]
 transform = Transform3D(0.852548, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -487,7 +486,7 @@ shape = SubResource("BoxShape3D_uj80q")
 [node name="CameraStuff" type="Node3D" parent="."]
 
 [node name="Start View" type="Node3D" parent="CameraStuff"]
-transform = Transform3D(0.999998, 0.0012702, -0.00119698, 0, 0.685818, 0.727773, 0.00174533, -0.727771, 0.685817, 0.0033823, 0.16704, -0.130847)
+transform = Transform3D(0.999998, 0.0012702, -0.00119698, 0, 0.685818, 0.727773, 0.00174533, -0.727771, 0.685817, 0.00336436, 0.167273, -0.120569)
 
 [node name="Tank View" type="Node3D" parent="CameraStuff"]
 transform = Transform3D(1, 0, 0, 0, 0.880609, 0.473843, 0, -0.473843, 0.880609, 0.0324134, 0.307824, 0.101359)

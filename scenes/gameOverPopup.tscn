@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://dk4q5f278gr0l"]
+
+[ext_resource type="FontFile" uid="uid://bndsg4dbgkmx6" path="res://fonts/Digital Dystopia.otf" id="2_veet0"]
+
+[sub_resource type="Theme" id="Theme_aq38k"]
+default_font = ExtResource("2_veet0")
+default_font_size = 50
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7kxv0"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ks6sd"]
+noise = SubResource("FastNoiseLite_7kxv0")
+
+[node name="2duiStuff" type="Node2D"]
+z_index = 2
+
+[node name="SCORE" type="RichTextLabel" parent="."]
+offset_left = 137.0
+offset_top = 263.0
+offset_right = 978.0
+offset_bottom = 462.0
+theme = SubResource("Theme_aq38k")
+theme_override_colors/default_color = Color(0.999639, 0.0439447, 0.0243507, 1)
+bbcode_enabled = true
+text = "[center] GAME OVER
+
+BUT THE WAR CONTINUES... [/center]"
+tab_size = 6
+visible_characters_behavior = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.223529, 0.0470588, 0, 0.729412)
+z_index = -1
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(573, 319)
+scale = Vector2(2.30859, 1.33203)
+texture = SubResource("NoiseTexture2D_ks6sd")

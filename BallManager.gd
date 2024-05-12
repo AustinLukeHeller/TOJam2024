@@ -3,7 +3,7 @@ extends Node3D
 @export var ballPrefab: Resource 	
 @export var spawnLocation: Marker3D
 @export var scoreManager: ScoreManager
-
+@export var gameover: Resource
 var lives: float
 
 
@@ -44,7 +44,15 @@ func looseLife():
 		print("Game Over")
 		Global.tilt=true#small hack to turn off stuff
 		#spawnmenu
-		reset()
+		var spawnPoint = get_tree().current_scene
+		spawnPoint.add_child(load(gameover.resource_path).instantiate())
+		get_node("Timer").start()
 	else:
 		spawnBall()
 	
+
+
+func _on_timer_timeout():
+	reset()
+	get_tree().reload_current_scene()
+	pass # Replace with function body.

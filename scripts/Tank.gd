@@ -5,7 +5,7 @@ extends ScoreReliant
 @export var turnMaxSpeed: float
 @export var progressionNode: Node
 var activated: bool = false
-var velocity: float = 0
+var velocity2: float = 0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -14,13 +14,13 @@ func _process(delta):
 		position+=Vector3.RIGHT*delta
 	if(passedScoreThreshold):
 		if(Input.is_action_pressed("Left")):
-			velocity+=turnAccel*delta
+			velocity2+=turnAccel*delta
 		elif(Input.is_action_pressed("Right")):
-			velocity-=turnAccel*delta
+			velocity2-=turnAccel*delta
 		else:
-			velocity = move_toward(velocity,0,turnAccel)
-		velocity = clamp(velocity,-turnMaxSpeed,turnMaxSpeed)
+			velocity2 = move_toward(velocity2,0,turnAccel)
+		velocity2 = clamp(velocity2,-turnMaxSpeed,turnMaxSpeed)
 		
-		rotation_degrees.y=clamp(rotation_degrees.y+velocity*delta,-maxAngle,maxAngle)
+		rotation_degrees.y=clamp(rotation_degrees.y+velocity2*delta,-maxAngle,maxAngle)
 		if(abs(rotation_degrees.y)==maxAngle):
-			velocity=0
+			velocity2=0

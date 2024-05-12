@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cd1g0fc670suc"]
+[gd_scene load_steps=19 format=3 uid="uid://cd1g0fc670suc"]
 
 [ext_resource type="Script" path="res://scripts/CameraControls.gd" id="1_2eqfg"]
 [ext_resource type="Script" path="res://scenes/FollowAtOffset.gd" id="1_12ctm"]
@@ -17,6 +17,9 @@ shading_mode = 0
 albedo_texture = ExtResource("1_x1yod")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_dukq0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k1xe7"]
+size = Vector3(0.257874, 0.404846, 0.230957)
 
 [sub_resource type="World3D" id="World3D_5wiho"]
 
@@ -44,7 +47,7 @@ texture_filter = 2
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.0781754, -0.984341, 0.157993, 0.352543, 0.175534, 0.919185, -0.932525, -0.0161583, 0.360745, 4.35084, 0, -0.512858)
 
-[node name="Tank" type="AnimatableBody3D" parent="."]
+[node name="Tank" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00724739, 0.103596, -0.151719)
 script = ExtResource("1_evj53")
 maxAngle = 65.0
@@ -59,6 +62,10 @@ material = SubResource("StandardMaterial3D_jpba1")
 [node name="CSGMesh3D" type="CSGMesh3D" parent="Tank"]
 transform = Transform3D(0.0329931, 0, 0, 0, -4.31728e-09, 0.0414168, 0, -0.0987679, -1.81039e-09, 0, 0.0849289, -0.169282)
 mesh = SubResource("CylinderMesh_dukq0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tank"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0154724, -0.0733948, 0.0422363)
+shape = SubResource("BoxShape3D_k1xe7")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 own_world_3d = true

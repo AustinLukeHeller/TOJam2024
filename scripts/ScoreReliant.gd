@@ -1,4 +1,4 @@
-extends AnimatableBody3D
+extends CharacterBody3D
 class_name ScoreReliant
 var passedScoreThreshold = true;
 

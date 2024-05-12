@@ -23,3 +23,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D):
 		state.linear_velocity = target_velocity
 		state.angular_velocity = Vector3.ZERO
 		should_reposition = false
+
+func _proccess(delta):
+	if( position.y <-100):
+		queue_free()

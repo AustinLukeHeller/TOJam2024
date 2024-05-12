@@ -13,6 +13,7 @@ size = Vector3(1, 1, 1.6207)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.571, 0.00913081, -3.353)
 script = ExtResource("1_vmm7f")
 moveSpeed = 0.5
+pointsOnKill = 1000.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.022557, 0, 0, 0, 0.022557, 0, 0, 0, 0.022557, 0, 0, -0.0441015)

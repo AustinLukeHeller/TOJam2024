@@ -4,9 +4,11 @@ extends ScoreReliant
 @export var turnAccel: float
 @export var turnMaxSpeed: float
 @export var progressionNode: Node
+@export var bulletPrefab : Resource
+@export var bulletSpeed: float
 var activated: bool = false
 var velocity2: float = 0
-
+var loaded: bool = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -24,5 +26,13 @@ func _process(delta):
 		rotation_degrees.y=clamp(rotation_degrees.y+velocity2*delta,-maxAngle,maxAngle)
 		if(abs(rotation_degrees.y)==maxAngle):
 			velocity2=0
+		if(loaded and Input.is_action_just_released("Launch")):
+			_spawn_bullet()
+func _spawn_bullet():
+	var spawnPoint = get_node("tube/default2")
+	var newBullet = load(bulletPrefab.resource_path).instantiate()
+	get_parent().add_child(newBullet)
+	newBullet.throw(spawnPoint.global_position, transform.basis.z*bulletSpeed)
+	newBullet.name="outerball"
 
 
